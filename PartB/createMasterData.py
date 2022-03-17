@@ -12,8 +12,6 @@ def getPath(city:str)->str:
     return f'A:/Datasets/DS2/{city}'
 
 
-dirlist=os.listdir('A:/Datasets/DS2/')
-
 def createMasterDataSet(fileNames:list)->pd.DataFrame:
     ''' Concatenates all the csv files in a directory
         fileNames: Name of the files in the directory '''
