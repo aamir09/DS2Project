@@ -5,6 +5,9 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import  StandardScaler
 from sklearn.base import BaseEstimator, TransformerMixin
+from models import linearRegression as lr
+from models import neuralNetwork as nn
+import tensorflow as tf
 
 #Creating Pipeline Classes
 
@@ -20,15 +23,15 @@ class dropColumns(BaseEstimator,TransformerMixin):
 
     def fit(self, X,y=None):
         #Pipelines fit  function
-        nan=X.isna().sum()/X.shape[0]
-        nan=nan[nan>0.55]
-        drop=nan.index
-        self.dropCols.extend(drop)
-        print(f'Dropping Columns : {self.dropCols}')
-
         return self
     
     def transform(self,X):
+        print(f'Dropping Columns : {self.dropCols}')
+        X=X.drop(columns=list(self.dropCols),axis=1)
+        return X
+    
+    def fit_transform(self,X,y=None):
+        print(f'Dropping Columns : {self.dropCols}')
         X=X.drop(columns=list(self.dropCols),axis=1)
         return X
 
@@ -39,15 +42,22 @@ class Imputer(BaseEstimator, TransformerMixin):
         super().__init__()
 
         self.cols=cols
+        self.imputer=None
     
     def fit(self,X,y=None):
+        self.imputer=IterativeImputer(random_state=2022)
         return self
 
     def transform(self,X):
-        imputer=IterativeImputer(random_state=2022)
-        XImputed=imputer.fit_transform(X[self.cols])
+        XImputed=self.imputer.transform(X[self.cols])
         XNew=pd.DataFrame(XImputed,columns=self.cols)
         return XNew
+    def fit_transform(self,X,y=None):
+        self.imputer=IterativeImputer(random_state=2022)
+        XImputed=self.imputer.fit_transform(X[self.cols])
+        XNew=pd.DataFrame(XImputed,columns=self.cols)
+        return XNew
+
 
 
 
@@ -107,9 +117,34 @@ class replaceWithNan(BaseEstimator, TransformerMixin):
     def fit(self,X,y=None):
         return self
 
+    def fit_transform(self,X,y=None):
+        return X.replace(9,np.nan)
+    
     def transform(self,X):
         return X.replace(9,np.nan)
 
 
 
-        
+class trainModels(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        super().__init__()
+        self.linearModel=None
+        self.neuralNetwork=None
+
+    def fit(self,X,y=None):
+        return self
+    
+    def fit_transform(self,X,y):
+        #Train Linear Model
+        self.linearModel=lr.trainModel(X,y)
+
+        #Train Neural Network
+        optimizer=tf.keras.optimizers.Adam(1e-3)
+        loss='mse'
+        metrics=['mse']
+        self.neuralNetwork=nn.trainNn(X,y,optimizer=optimizer,loss=loss,metrics=metrics)
+
+        return self.linearModel,self.neuralNetwork
+
+    def transform(self,X):
+        return X
