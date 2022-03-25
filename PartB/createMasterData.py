@@ -17,9 +17,11 @@ def createMasterDataSet(fileNames:list)->pd.DataFrame:
         fileNames: Name of the files in the directory '''
     print('Importing the first dataset in the directory')
     master=pd.read_csv(getPath(fileNames[0]))
+    master['city']=fileNames[0].split('/')[-1].replace('.csv','')
     print('Concatenating all the other dataframes to create master data')
     for i in fileNames[1:]:
         tempDf=pd.read_csv(getPath(i))
+        tempDf['city']=i.split('/')[-1].replace('.csv','')
         master=pd.concat([master,tempDf],axis=0)
     print('Master Data Successfully Generated')
     

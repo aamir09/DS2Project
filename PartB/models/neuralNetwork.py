@@ -12,15 +12,19 @@ def createNN(inputShape,hiddenLayers,nNodes,alpha):
     x=neuralBlock(input,nNodes[0],alpha)
     for i in range(1,hiddenLayers):
         x=neuralBlock(x,nNodes[i],alpha)
-    output=neuralBlock(x,1,alpha)
+    # dr=keras.layers.Dropout(0.5)(x)
+    bnorm=keras.layers.BatchNormalization()(x)
+    output=neuralBlock(bnorm,1,alpha)
     model=keras.Model(input,output)
     return model
     
 def trainNn(X,y,optimizer,loss,metrics):
-    model=createNN((X.shape[1]),5,[16,32,64,32,16],1e-3)
+    model=createNN((X.shape[1]),6,[64,128,128,128,64,32],1e-1)
     model.compile(optimizer=optimizer,loss=loss,metrics=metrics)
-    es=keras.callbacks.EarlyStopping(monitor='val_loss',patience=3,verbose=0,restore_best_weights=True)
-    history=model.fit(X,y,epochs=20,validation_split=0.2,callbacks=[es])
+    print(X)
+    print(y)
+    es=keras.callbacks.EarlyStopping(monitor='val_loss',patience=5,verbose=0,restore_best_weights=True)
+    history=model.fit(X,y,epochs=40,validation_split=0.2,callbacks=[es],batch_size=16)
     return {'model':model,'history':history}
 
 
