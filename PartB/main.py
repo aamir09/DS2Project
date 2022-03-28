@@ -8,7 +8,7 @@ import createMasterData as cmd
 import pipelineClasses as pc
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error,r2_score
 
 
 
@@ -68,8 +68,18 @@ lregMse=mean_squared_error(y_val,lreg.predict(X_val))
 nnMse=mean_squared_error(y_val,nn.predict(np.asarray(X_val).astype('float32')))
 treeMSe=mean_squared_error(y_val,tree.predict(X_val))
 
+lregR2=r2_score(y_val,lreg.predict(X_val))
+nnR2=r2_score(y_val,nn.predict(np.asarray(X_val).astype('float32')))
+treeR2=r2_score(y_val,tree.predict(X_val))
+
 print('The mse of Linear Model is: ',lregMse)
 print('The mse of Neural Network is: ', nnMse)
 print('The mse of Random Forest Model is: ',treeMSe)
+
+print('The r2 Score of Linear Model is: ',lregR2)
+print('The r2 Score of Neural Network is: ', nnR2)
+print('The r2 Score of Random Forest Model is: ',treeR2)
+
+
 
 
