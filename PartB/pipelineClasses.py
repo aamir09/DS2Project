@@ -8,6 +8,8 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.linear_model import LogisticRegression
 from models import linearRegression as lr
 from models import neuralNetwork as nn
+from models import decisionTree as dt
+from sklearn.metrics import mean_squared_error
 import tensorflow as tf
 import os 
 
@@ -40,45 +42,45 @@ class dropColumns(BaseEstimator,TransformerMixin):
 
 #Imputation 
 
-class Imputer(BaseEstimator, TransformerMixin):
-    def __init__(self,cols):
-        super().__init__()
+# class Imputer(BaseEstimator, TransformerMixin):
+#     def __init__(self,cols):
+#         super().__init__()
 
-        self.cols=cols
-        self.imputer=None
+#         self.cols=cols
+#         self.imputer=None
     
-    def fit(self,X,y=None):
-        self.imputer=IterativeImputer(random_state=2022)
-        return self
+#     def fit(self,X,y=None):
+#         self.imputer=IterativeImputer(random_state=2022)
+#         return self
 
-    def transform(self,X):
-        XImputed=self.imputer.transform(X[self.cols])
-        XNew=pd.DataFrame(XImputed,columns=self.cols)
-        return XNew
+#     def transform(self,X):
+#         XImputed=self.imputer.transform(X[self.cols])
+#         XNew=pd.DataFrame(XImputed,columns=self.cols)
+#         return XNew
         
-    def fit_transform(self,X,y=None):
-        self.imputer=IterativeImputer(random_state=2022)
-        XImputed=self.imputer.fit_transform(X[self.cols])
-        XNew=pd.DataFrame(XImputed,columns=self.cols)
-        return XNew
+    # def fit_transform(self,X,y=None):
+    #     self.imputer=IterativeImputer(random_state=2022)
+    #     XImputed=self.imputer.fit_transform(X[self.cols])
+    #     XNew=pd.DataFrame(XImputed,columns=self.cols)
+    #     return XNew
 
 
 
 
-class standardize(BaseEstimator, TransformerMixin):
+# class standardize(BaseEstimator, TransformerMixin):
 
-    def __init__(self,cols):
-        super().__init__()
-        self.cols=cols
+#     def __init__(self,cols):
+#         super().__init__()
+#         self.cols=cols
     
-    def fit(self,X,y=None):
-        return self
+#     def fit(self,X,y=None):
+#         return self
 
-    def transform(self,X):
+#     def transform(self,X):
 
-        scaler=StandardScaler()
-        XScaled=scaler.fit_transform(X[self.cols])
-        return XScaled
+#         scaler=StandardScaler()
+#         XScaled=scaler.fit_transform(X[self.cols])
+#         return XScaled
 
 class encoder(BaseEstimator, TransformerMixin):
 
@@ -146,13 +148,14 @@ class trainModels(BaseEstimator, TransformerMixin):
         super().__init__()
         self.linearModel=None
         self.neuralNetwork=None
+        self.tree=None
 
     def fit(self,X,y=None):
         return self
     
     def fit_transform(self,X,y):
         #Train Linear Model
-        self.linearModel=lr.trainModel(X,y)
+        self.linearModel=lr.trainModel(X,np.log(y))
 
         #Train Neural Network
         optimizer=tf.keras.optimizers.Adam(1e-3)
@@ -160,8 +163,8 @@ class trainModels(BaseEstimator, TransformerMixin):
         metrics=['mse']
         print(X.shape)
         self.neuralNetwork=nn.trainNn(np.asarray(X).astype('float32'),np.log(y),optimizer=optimizer,loss=loss,metrics=metrics)
-
-        return self.linearModel,self.neuralNetwork
+        self.tree=dt.getBestEstimator(X,np.log(y))
+        return {'X_train':X,'linearModel':self.linearModel,'neuralNetwork':self.neuralNetwork,'tree':self.tree}
 
     def transform(self,X):
         return X
@@ -233,43 +236,43 @@ class addBin(BaseEstimator, TransformerMixin):
         return X
 
 
-class customImputer(BaseEstimator, TransformerMixin):
-        def __init__(self,cols):
-            super().__init__()
-            self.statistics = {}
-            self.cols=cols
+# class customImputer(BaseEstimator, TransformerMixin):
+#         def __init__(self,cols):
+#             super().__init__()
+#             self.statistics = {}
+#             self.cols=cols
 
-        def calculateStatistic(self,X,feature):
-            bin1=X[X['AreaType']==1].dropna()[feature].mode()
-            bin2=X[X['AreaType']==2].dropna()[feature].mode()
-            bin3=X[X['AreaType']==3].dropna()[feature].mode()
-            bin4=X[X['AreaType']==4].dropna()[feature].mode()
-            self.statistics[feature]={'bin1':bin1,'bin2':bin2,'bin3':bin3,'bin4':bin4}
+#         def calculateStatistic(self,X,feature):
+#             bin1=X[X['AreaType']==1].dropna()[feature].mode()
+#             bin2=X[X['AreaType']==2].dropna()[feature].mode()
+#             bin3=X[X['AreaType']==3].dropna()[feature].mode()
+#             bin4=X[X['AreaType']==4].dropna()[feature].mode()
+#             self.statistics[feature]={'bin1':bin1,'bin2':bin2,'bin3':bin3,'bin4':bin4}
 
-        def fit(self,X):
-            for i in self.cols:
-                self.calculateStatistic(X,i)
-            return self
+#         def fit(self,X):
+#             for i in self.cols:
+#                 self.calculateStatistic(X,i)
+#             return self
 
-        def fit_transform(self,X,y=None):
-            for i in self.cols:
-                self.calculateStatistic(X,i)
-                print(X.loc[X[X['AreaType']==1],:])
-                # X.loc[X[X['AreaType']==1][i].isna(),i]=self.statistics[i]['bin1']
-                print(X.index.is_unique)
-                # X[X['AreaType']==][i].isna()]]=self.statistics[i]['bin2']
-                # X[X['AreaType']==3][i].isna()]]=self.statistics[i]['bin3']
-                # X[X['AreaType']==1][i].isna()]]=self.statistics[i]['bin4']
-                break
-            return X
+#         def fit_transform(self,X,y=None):
+#             for i in self.cols:
+#                 self.calculateStatistic(X,i)
+#                 print(X.loc[X[X['AreaType']==1],:])
+#                 # X.loc[X[X['AreaType']==1][i].isna(),i]=self.statistics[i]['bin1']
+#                 print(X.index.is_unique)
+#                 # X[X['AreaType']==][i].isna()]]=self.statistics[i]['bin2']
+#                 # X[X['AreaType']==3][i].isna()]]=self.statistics[i]['bin3']
+#                 # X[X['AreaType']==1][i].isna()]]=self.statistics[i]['bin4']
+#                 break
+        #     return X
 
-        def transform(self,X):
-            # for i in self.cols:
-            #     X.loc[X[X['Area']<=self.tf].index,i]=self.statistics[i]['bin1']
-            #     X.loc[X[(X['Area']>self.tf) & (X['Area']<=self.ff)].index,i]=self.statistics[i]['bin2']
-            #     X.loc[X[(X['Area']>self.ff) & (X['Area']<=self.sf)].index,i]=self.statistics[i]['bin3']
-            #     X.loc[X[X['Area']>self.sf].index,i]=self.statistics[i]['bin4']
-            return X
+        # def transform(self,X):
+        #     # for i in self.cols:
+        #     #     X.loc[X[X['Area']<=self.tf].index,i]=self.statistics[i]['bin1']
+        #     #     X.loc[X[(X['Area']>self.tf) & (X['Area']<=self.ff)].index,i]=self.statistics[i]['bin2']
+        #     #     X.loc[X[(X['Area']>self.ff) & (X['Area']<=self.sf)].index,i]=self.statistics[i]['bin3']
+        #     #     X.loc[X[X['Area']>self.sf].index,i]=self.statistics[i]['bin4']
+        #     return X
         
 class AddIQR(BaseEstimator, TransformerMixin):
         def __init__(self):
@@ -311,7 +314,7 @@ class AddIQR(BaseEstimator, TransformerMixin):
             X.loc[X['Chennai']==1,'IQR']=self.iqr['CHENNAI']
             X.loc[X['Hyderabad']==1,'IQR']=self.iqr['HYDERABAD']
             X.loc[X['Mumbai']==1,'IQR']=self.iqr['MUMBAI']
-            X.loc[X['Banglore']==1,'IQR']=self.iqr['BANGLORE']
+            X.loc[X['Bangalore']==1,'IQR']=self.iqr['BANGLORE']
 
             return X
 
@@ -326,23 +329,3 @@ class AddIQR(BaseEstimator, TransformerMixin):
                 print(array)
                 result[i]=np.sum(weights*array)
             return result
-
-
-
-        
-
-            
-
-
-
-
-
-
-
-            
-        
-            
-
-
-
-
