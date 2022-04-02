@@ -22,10 +22,9 @@ def createMasterDataSet(fileNames:list)->pd.DataFrame:
     for i in fileNames[1:]:
         tempDf=pd.read_csv(getPath(i))
         tempDf['city']=i.split('/')[-1].replace('.csv','')
-        master=pd.concat([master,tempDf],axis=0)
+        master=pd.concat([master,tempDf],axis=0,ignore_index=True)
     print('Master Data Successfully Generated')
-    
-    return master.reindex()
+    return master
 
 
 #Explore the master data 

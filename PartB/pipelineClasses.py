@@ -126,6 +126,8 @@ class categoricalImputer(BaseEstimator, TransformerMixin):
         XImputed=self.imputer.fit_transform(X[self.cols])
         X[self.cols]=XImputed
         return X
+
+
 #Nan Replacer
 class replaceWithNan(BaseEstimator, TransformerMixin):
 
@@ -236,45 +238,77 @@ class addBin(BaseEstimator, TransformerMixin):
         return X
 
 
-# class customImputer(BaseEstimator, TransformerMixin):
-#         def __init__(self,cols):
-#             super().__init__()
-#             self.statistics = {}
-#             self.cols=cols
+class customImputer(BaseEstimator, TransformerMixin):
 
-#         def calculateStatistic(self,X,feature):
-#             bin1=X[X['AreaType']==1].dropna()[feature].mode()
-#             bin2=X[X['AreaType']==2].dropna()[feature].mode()
-#             bin3=X[X['AreaType']==3].dropna()[feature].mode()
-#             bin4=X[X['AreaType']==4].dropna()[feature].mode()
-#             self.statistics[feature]={'bin1':bin1,'bin2':bin2,'bin3':bin3,'bin4':bin4}
+    def __init__(self,cols):
+        super().__init__()
+        self.statistics = {}
+        self.cols=cols
+        self.bed=None
 
-#         def fit(self,X):
-#             for i in self.cols:
-#                 self.calculateStatistic(X,i)
-#             return self
+    def calculateStatistic(self,X,feature):
+        bin1=X[X['AreaType']==1].dropna()[feature].mode()
+        bin2=X[X['AreaType']==2].dropna()[feature].mode()
+        bin3=X[X['AreaType']==3].dropna()[feature].mode()
+        bin4=X[X['AreaType']==4].dropna()[feature].mode()
+        self.statistics[feature]={'bin1':bin1,'bin2':bin2,'bin3':bin3,'bin4':bin4}
 
-#         def fit_transform(self,X,y=None):
-#             for i in self.cols:
-#                 self.calculateStatistic(X,i)
-#                 print(X.loc[X[X['AreaType']==1],:])
-#                 # X.loc[X[X['AreaType']==1][i].isna(),i]=self.statistics[i]['bin1']
-#                 print(X.index.is_unique)
-#                 # X[X['AreaType']==][i].isna()]]=self.statistics[i]['bin2']
-#                 # X[X['AreaType']==3][i].isna()]]=self.statistics[i]['bin3']
-#                 # X[X['AreaType']==1][i].isna()]]=self.statistics[i]['bin4']
-#                 break
-        #     return X
+    def fit(self,X):
+        return self
 
-        # def transform(self,X):
-        #     # for i in self.cols:
-        #     #     X.loc[X[X['Area']<=self.tf].index,i]=self.statistics[i]['bin1']
-        #     #     X.loc[X[(X['Area']>self.tf) & (X['Area']<=self.ff)].index,i]=self.statistics[i]['bin2']
-        #     #     X.loc[X[(X['Area']>self.ff) & (X['Area']<=self.sf)].index,i]=self.statistics[i]['bin3']
-        #     #     X.loc[X[X['Area']>self.sf].index,i]=self.statistics[i]['bin4']
-        #     return X
+    def fit_transform(self,X,y=None):
+        for i in self.cols:
+            index=[]
+            if i.endswith('Bedrooms'):
+                arr=np.zeros(shape=X.shape[0])
+                idx=X.loc[(X[i].isna())].index
+                toReplace=X[~X.index.isin(idx)].index
+                m=X[i].mode()
+                self.bed=m
+                arr[idx]=self.bed
+                arr[toReplace]=X.loc[toReplace,i]
+                X.loc[:,i]=arr
+                continue
+            self.calculateStatistic(X,i)
+            arr=np.zeros(shape=X.shape[0])
+            for num,key in enumerate(self.statistics[i]):
+                mode =self.statistics[i][key]
+                idx=X.loc[(X[i].isna()) & (X['AreaType']==num+1)].index
+                if len(idx)>0: 
+                    arr[idx]=mode
+                    index.extend(idx)
+            if len(index)>0:
+                toReplace=X[~X.index.isin(index)].index
+                arr[toReplace]=X.loc[toReplace,i]
+                X.loc[:,i]=arr
+        print(X.isna().sum())
+        return X
+
+    def transform(self,X):
+        for i in self.cols:
+            index=[]
+            if i.endswith('Bedrooms'):
+                arr=np.zeros(shape=X.shape[0])
+                idx=X.loc[(X[i].isna())].index
+                toReplace=X[~X.index.isin(idx)].index
+                arr[idx]=self.bed
+                arr[toReplace]=X.loc[toReplace,i]
+                X.loc[:,i]=arr
+                continue
+            arr=np.zeros(shape=X.shape[0])
+            for num,key in enumerate(self.statistics[i]):
+                mode =self.statistics[i][key]
+                idx=X.loc[(X[i].isna()) & (X['AreaType']==num+1)].index
+                if len(idx)>0: 
+                    arr[idx]=mode
+                    index.extend(idx)
+            if len(index)>0:
+                toReplace=X[~X.index.isin(index)].index
+                arr[toReplace]=X.loc[toReplace,i]
+                X.loc[:,i]=arr
+        return X
         
-class AddIQR(BaseEstimator, TransformerMixin):
+class AddHQLI(BaseEstimator, TransformerMixin):
         def __init__(self):
             super().__init__()
             self.qhi=None
@@ -297,24 +331,24 @@ class AddIQR(BaseEstimator, TransformerMixin):
             self.iqr={}
             for i in AI.index:
                 self.iqr[i]=self.qhi[i]+self.bai[i]+self.ai[i]
-            X['IQR']=1
-            X.loc[X['Delhi']==1,'IQR']=self.iqr['DELHI']
-            X.loc[X['Kolkata']==1,'IQR']=self.iqr['KOLKATA']
-            X.loc[X['Chennai']==1,'IQR']=self.iqr['CHENNAI']
-            X.loc[X['Hyderabad']==1,'IQR']=self.iqr['HYDERABAD']
-            X.loc[X['Mumbai']==1,'IQR']=self.iqr['MUMBAI']
-            X.loc[X['Bangalore']==1,'IQR']=self.iqr['BANGLORE']
+            X['HQLI']=1
+            X.loc[X['Delhi']==1,'HQLI']=self.iqr['DELHI']
+            X.loc[X['Kolkata']==1,'HQLI']=self.iqr['KOLKATA']
+            X.loc[X['Chennai']==1,'HQLI']=self.iqr['CHENNAI']
+            X.loc[X['Hyderabad']==1,'HQLI']=self.iqr['HYDERABAD']
+            X.loc[X['Mumbai']==1,'HQLI']=self.iqr['MUMBAI']
+            X.loc[X['Bangalore']==1,'HQLI']=self.iqr['BANGLORE']
 
             return X
 
         def transform(self,X):
-            X['IQR']=None
-            X.loc[X['Delhi']==1,'IQR']=self.iqr['DELHI']
-            X.loc[X['Kolkata']==1,'IQR']=self.iqr['KOLKATA']
-            X.loc[X['Chennai']==1,'IQR']=self.iqr['CHENNAI']
-            X.loc[X['Hyderabad']==1,'IQR']=self.iqr['HYDERABAD']
-            X.loc[X['Mumbai']==1,'IQR']=self.iqr['MUMBAI']
-            X.loc[X['Bangalore']==1,'IQR']=self.iqr['BANGLORE']
+            X['HQLI']=None
+            X.loc[X['Delhi']==1,'HQLI']=self.iqr['DELHI']
+            X.loc[X['Kolkata']==1,'HQLI']=self.iqr['KOLKATA']
+            X.loc[X['Chennai']==1,'HQLI']=self.iqr['CHENNAI']
+            X.loc[X['Hyderabad']==1,'HQLI']=self.iqr['HYDERABAD']
+            X.loc[X['Mumbai']==1,'HQLI']=self.iqr['MUMBAI']
+            X.loc[X['Bangalore']==1,'HQLI']=self.iqr['BANGLORE']
 
             return X
 
@@ -329,3 +363,27 @@ class AddIQR(BaseEstimator, TransformerMixin):
                 print(array)
                 result[i]=np.sum(weights*array)
             return result
+
+
+
+
+#### TEST #################################
+
+
+
+# df=pd.read_csv('masterData.csv')
+# df1=pd.read_csv('masterDataCleaned.csv')
+# df['AreaType']=df1['AreaType']
+# df=df.replace(9,np.nan)
+# c=customImputer(df.columns)
+
+# nanSample=np.random.randint(1,df.shape[0]-1,size=500)
+# X=df.drop('Price',axis=1)
+# X.iloc[nanSample]=np.nan
+
+# print(c.fit_transform(df))
+
+
+
+# df.loc[(df['Sofa'].isna()) & (df['AreaType']==4),'Sofa']=5
+
