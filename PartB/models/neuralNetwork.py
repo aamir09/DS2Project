@@ -21,11 +21,9 @@ def createNN(inputShape,hiddenLayers,nNodes,alpha):
 def trainNn(X,y,optimizer,loss,metrics):
     model=createNN((X.shape[1]),6,[64,128,128,128,64,32],1e-1)
     model.compile(optimizer=optimizer,loss=loss,metrics=metrics)
-    print(X)
-    print(y)
     es=keras.callbacks.EarlyStopping(monitor='val_loss',patience=5,verbose=0,restore_best_weights=True)
     history=model.fit(X,y,epochs=40,validation_split=0.2,callbacks=[es],batch_size=16)
-    return {'model':model,'history':history}
+    return {'model':model,'history':history.history}
 
 
     

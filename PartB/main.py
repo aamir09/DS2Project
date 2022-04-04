@@ -3,6 +3,7 @@ import nntplib
 import pandas as pd
 import numpy as np
 import os
+import pickle
 from sklearn.compose import ColumnTransformer
 import createMasterData as cmd
 import pipelineClasses as pc
@@ -58,7 +59,7 @@ cleaningPipe=Pipeline([
 
 masterPipeline=Pipeline([
     ('cleaning',cleaningPipe),
-    # ('model',pc.trainModels())
+    ('model',pc.trainModels())
 ],verbose=True)
 
 
@@ -73,6 +74,19 @@ X_train=res['X_train']
 lreg=res['linearModel']
 nn=res['neuralNetwork']['model']
 tree=res['tree']
+history=res['neuralNetwork']['history']
+
+modelList={'lreg':lreg,'history':history,'forest':tree}
+
+for i in modelList:
+    with open(f'PartB/models/savedModels/{i}.pickle','wb') as f:
+        pickle.dump(modelList[i],f,protocol=pickle.HIGHEST_PROTOCOL)
+        
+modelJson=nn.to_json()
+with open('PartB/models/savedModels/nueralNetwork.json','w') as file:
+    file.write(modelJson)
+nn.save_weights('PartB/models/savedModels/nueralNetworkWeights.h5')
+
 
 y_val=np.log(y_val)
 lregMse=mean_squared_error(y_val,lreg.predict(X_val))
@@ -96,8 +110,8 @@ print('The r2 Score of Random Forest Model is: ',treeR2)
 
 ##### Creating Train-Test Files #####
 
-# train=pd.concat([X_train,np.log(y_train)],axis=1)
-# test=pd.concat([X_val,y_val],axis=1)
+train=pd.concat([X_train,np.log(y_train)],axis=1)
+test=pd.concat([X_val,y_val],axis=1)
 
-# train.to_csv('S:/DS2Project/train.csv')
-# test.to_csv('S:/DS2Project/test.csv')
+train.to_csv('S:/DS2Project/train.csv')
+test.to_csv('S:/DS2Project/test.csv')
