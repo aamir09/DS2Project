@@ -62,42 +62,42 @@ masterPipeline=Pipeline([
 ],verbose=True)
 
 
-# res=masterPipeline.fit_transform(X_train,y_train)
-# print(res)
-X_train=masterPipeline.fit_transform(X_train,y_train)
+res=masterPipeline.fit_transform(X_train,y_train)
+print(res)
+# X_train=masterPipeline.fit_transform(X_train,y_train)
 X_val=masterPipeline.transform(X_val)
 print(X_val)
 
 
-# X_train=res['X_train']
-# lreg=res['linearModel']
-# nn=res['neuralNetwork']['model']
-# tree=res['tree']
+X_train=res['X_train']
+lreg=res['linearModel']
+nn=res['neuralNetwork']['model']
+tree=res['tree']
 
 y_val=np.log(y_val)
-# lregMse=mean_squared_error(y_val,lreg.predict(X_val))
-# nnMse=mean_squared_error(y_val,nn.predict(np.asarray(X_val).astype('float32')))
-# treeMSe=mean_squared_error(y_val,tree.predict(X_val))
+lregMse=mean_squared_error(y_val,lreg.predict(X_val))
+nnMse=mean_squared_error(y_val,nn.predict(np.asarray(X_val).astype('float32')))
+treeMSe=mean_squared_error(y_val,tree.predict(X_val))
 
-# lregR2=r2_score(y_val,lreg.predict(X_val))
-# nnR2=r2_score(y_val,nn.predict(np.asarray(X_val).astype('float32')))
-# treeR2=r2_score(y_val,tree.predict(X_val))
+lregR2=r2_score(y_val,lreg.predict(X_val))
+nnR2=r2_score(y_val,nn.predict(np.asarray(X_val).astype('float32')))
+treeR2=r2_score(y_val,tree.predict(X_val))
 
-# print('The mse of Linear Model is: ',lregMse)
-# print('The mse of Neural Network is: ', nnMse)
-# print('The mse of Random Forest Model is: ',treeMSe)
+print('The mse of Linear Model is: ',lregMse)
+print('The mse of Neural Network is: ', nnMse)
+print('The mse of Random Forest Model is: ',treeMSe)
 
-# print('The r2 Score of Linear Model is: ',lregR2)
-# print('The r2 Score of Neural Network is: ', nnR2)
-# print('The r2 Score of Random Forest Model is: ',treeR2)
+print('The r2 Score of Linear Model is: ',lregR2)
+print('The r2 Score of Neural Network is: ', nnR2)
+print('The r2 Score of Random Forest Model is: ',treeR2)
 
 
 
 
 ##### Creating Train-Test Files #####
 
-train=pd.concat([X_train,np.log(y_train)],axis=1)
-test=pd.concat([X_val,y_val],axis=1)
+# train=pd.concat([X_train,np.log(y_train)],axis=1)
+# test=pd.concat([X_val,y_val],axis=1)
 
-train.to_csv('S:/DS2Project/train.csv')
-test.to_csv('S:/DS2Project/test.csv')
+# train.to_csv('S:/DS2Project/train.csv')
+# test.to_csv('S:/DS2Project/test.csv')
