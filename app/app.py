@@ -103,15 +103,24 @@ with col1:
   st.write("")
 
 with col2:
-  st.image('app/images/Pipeline.png',caption='Figure 2: End-To-End Pipeline Solution')
+  st.image('app/images/Pipeline.jpeg',caption='Figure 2: End-To-End Pipeline Solution')
 
 with col3:
   st.write("")
 
+with col1:
+  st.write("")
 
+with col2:
+  st.image('app/images/pipelineWorkflow.jpeg',caption='Figure 3: Workflow')
+
+with col3:
+  st.write("")
+
+### Level 1 ####
 level1= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Level 1: Creating Master Data</h3>'
 st.markdown(level1,unsafe_allow_html=True) 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In level1 we create the master data by combining the files for the six cities. This operation is carried out using pandas concat method with ignoring the indexes of the original datasets so to define a unified index, to disregard the problem of duplicate indices. This ensures that queries on the data set is run smoothly and correctly. This aggregated data is what we are calling the master data. The master data is then split into training and test set which acts an input for level2. The distribution of the dependent variable Price is highly left skewed which makes certain estimates on it very unrelaible, hence we model on the log transformation of the dependent variable. The log transformation brings the distribution closer to a normal distribution and also scales range of the variable. The effect of log transformation are on the dependent variable is shown in Figure 3.</p>'
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In level1 we create the master data by combining the files for the six cities. This operation is carried out using pandas concat method with ignoring the indexes of the original datasets so to define a unified index, to disregard the problem of duplicate indices. This ensures that queries on the data set is run smoothly and correctly. This aggregated data is what we are calling the master data. The master data is then split into training and test set which acts an input for level2. The distribution of the dependent variable Price is highly left skewed which makes certain estimates on it very unrelaible, hence we model on the log transformation of the dependent variable. The log transformation brings the distribution closer to a normal distribution and also scales range of the variable. The effect of log transformation are on the dependent variable is shown in Figure 4.</p>'
 st.markdown(summary,unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1,6,1])
@@ -120,7 +129,53 @@ with col1:
   st.write("")
 
 with col2:
-  st.image('app/images/PriceDistribution.jpeg',caption='Figure 3: Log transformation on Price')
+  st.image('app/images/PriceDistribution.jpeg',caption='Figure 4: Log transformation on Price')
 
 with col3:
   st.write("")
+
+#### Level 2 ####
+level2= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Level 2: Cleaning Pipeline</h3>'
+st.markdown(level2,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The cleaning pipeline is the first part of the end-to-end training pipeline, it not only cleanes the data, it transforms our data and add new features to our data(feature engineering). The follwing operations are performed by the cleaning pipeline:</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+first='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Drops Unecessary Columns: </b>The drop columns operation is a custom class in our pipeline which takes a list of columns and drop them from the dataset. As majiority columns had more than 70% null values, we did not drop on the percentage null values in a column. Generally the threshold of dropping columns in percentage null values is between 50-80 percent.</li><ul>'
+st.markdown(first,unsafe_allow_html=True) 
+
+second='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Replace NaN Values: </b>The null values in the binary features is represented by the digit 9, this operation finds those values and replace them with Nan(Not a Number). Nan is a special floating point number which is used as a standard to represent missing values.</li><ul>'
+st.markdown(second,unsafe_allow_html=True) 
+
+third='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Add Area Bins: </b>This is one of the feature engineering operations that we do in our pipeline. It evalutes the quantiles of the feature Area and assigns the corresponding quantile number(1, 2, 3, 4) in which a sample resides. This provides a relative information of the size of a house and we call this new variable AreaType; small if it resides in quantile 1 encoded as 1, medium if it resides in quantile 2 encoded as 2, large if it resides in quantile 3 encoded as 3 and very large if it resides in quantile 4 encoded as 4.</li><ul>'
+st.markdown(third,unsafe_allow_html=True) 
+
+fourth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Custom Imputer: </b>This is one of the most important operation of this pipeline, imputing the null/NaN values. We came up with a better solution than just imputing the null values with most frequent classes in the in dataset for each feature. Our custom imputer uses the relative area information using the area bins created earlier. For each feature it calculates the most frequent class for each area type(1, 2, 3, 4)  and then imputes the null values residing in a particular area type with their respective calculated modes. This operation results in more localized imputation and less information loss.</li><ul>'
+st.markdown(fourth,unsafe_allow_html=True) 
+
+fifth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Handle Outliers: </b>In this operation we handle the outliers in feature Area as shown above on the right of Figure 1 by replacing the outliers with by Q1-1.5*IQR and Q3+1.5*IQR, where Q1, Q2 and IQR is the 25th percentile, 75th percentile and Interquartile range respectively; any things less than Q1-1.5*IQR is reassigned as Q1-1.5*IQR and any value greater than Q3+1.5*IQR to Q3+1.5*IQR.</li><ul>'
+st.markdown(fifth,unsafe_allow_html=True) 
+
+sixth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>One Hot Encoder: </b>One hot encoding is extensively used in encoding categorical columns to series of binary dummy columns, one for each category in which 0 represents that a sample does not correspond to the class where as 1 represent that a sample represent to this particular class. We used one hot encoding to convert our city variable conatining city names to binary dummy variables so that the machine can process this information.</li><ul>'
+st.markdown(sixth,unsafe_allow_html=True) 
+
+seventh='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Feature Engineering: </b>Though we have done some feature engineering above but this is the more advanced one as we augment our data with the Indian Housing Census Data 2011. Our aim is to add  Housing Quality of Living Index(HQLI) for each state in our dataset. It depends upon three variables which are quality of housing index(QHI), basic amenity index(BAI), asset index(AI). HQLI = QHI + BAI + AI. The feature information to be cosidered for calculation of QHI are:\n<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">HouseHolds by good condition of residential census houses</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">HouseHolds living in permanent houses</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Married couples do not have exclusive room</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">HouseHolds with own houses</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">HouseHolds having at least two dwelling rooms</li></ul>\nBAI are: \n<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Drinking water with in premises</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Electricity</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Latrine within premises</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Bath room</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Closed drainage system for waste water outlet</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Separate kitchen inside the house</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">LPG/PNG for cooking</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Banking service</li></ul>\nAI are: \n<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Radio/Transistor</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Television</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Telephone facilities (mobile, landline or both)</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Bicycle</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Scooter/Motorcycle/Moped</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Car/Jeep/Van</li><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Computer/Laptop (with or without internet)</li></ul>These features are aggreagted by state name and then a weighted(randomly intialised weights) sum is calcultaed for QHI, BAI, AI(as shown below) each state. These 3 weighted sums for each state is then added to get HQLI for each state.</li></ul>'
+st.markdown(seventh,unsafe_allow_html=True) 
+st.latex('QHI\ =w_1\cdot f_1+w_2\cdot f_2+w_3\cdot f_3+w_4\cdot f_4+w_5\cdot f_5')
+st.latex('BAI\ =w_1\cdot f_1+w_2\cdot f_2+w_3\cdot f_3+w_4\cdot f_4+w_5\cdot f_5+w_6\cdot f_6 + w_7\cdot f_7 + w_8\cdot f_8 ')
+st.latex('AI\ =w_1\cdot f_1+w_2\cdot f_2+w_3\cdot f_3+w_4\cdot f_4+w_5\cdot f_5+w_6\cdot f_6 + w_7\cdot f_7')
+st.latex('HQLI = QHI + BAI +AI')
+st.latex('where\ w_i\ are\ the\ randomly\ initialized\ weights\, f_i\ are\ the\ feratures\ to\ be\ used.')
+
+
+
+### Level 3 ###
+level3= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Level 3: Modelling</h3>'
+st.markdown(level3,unsafe_allow_html=True) 
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Level 3 is the second and the last part of our end-to-end pipeline, where we train various machine learning and deep learning models. The transformed training set is taken from the cleaning pipeline and passed on to several regression models. The complete pipeline of level1 and level2 returns these models with the training data.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+
+##### Model Comparison ##########
+comparison= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Model Comparison</h3>'
+st.markdown(comparison,unsafe_allow_html=True) 
