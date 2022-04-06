@@ -44,6 +44,7 @@ remCols.remove('city')
 remCols.remove('Area')
 
 outlierCols=['Area']
+contCols=['Area','HQLI']
 
 cleaningPipe=Pipeline([
     ('dropColumns',pc.dropColumns(dropcols)),
@@ -52,7 +53,8 @@ cleaningPipe=Pipeline([
     ('imputerNullValues',pc.customImputer(remCols)),
     ('outlierHandling',pc.outlierHandling(outlierCols)),
     ('oneHotEncodeCity',pc.encoder(['city'])),
-    ('addIqrFeature',pc.AddHQLI())
+    ('addIqrFeature',pc.AddHQLI()),
+    ('Standardization',pc.standardize(contCols))
 ],verbose=True)
 
 
@@ -65,7 +67,6 @@ masterPipeline=Pipeline([
 
 res=masterPipeline.fit_transform(X_train,y_train)
 print(res)
-# X_train=masterPipeline.fit_transform(X_train,y_train)
 X_val=masterPipeline.transform(X_val)
 print(X_val)
 
@@ -73,38 +74,83 @@ print(X_val)
 X_train=res['X_train']
 lreg=res['linearModel']
 nn=res['neuralNetwork']['model']
-tree=res['tree']
+forest=res['forest']
 history=res['neuralNetwork']['history']
+tree=res['tree']
+knn=res['knn']
+gboost=res['gboost']
+cboost=res['cboost']
 
-modelList={'lreg':lreg,'history':history,'forest':tree}
+modelList={'lreg':lreg,'history':history,'forest':forest,'tree':tree,'knn':knn,'gboost':gboost,'cboost':cboost}
 
-for i in modelList:
-    with open(f'PartB/models/savedModels/{i}.pickle','wb') as f:
-        pickle.dump(modelList[i],f,protocol=pickle.HIGHEST_PROTOCOL)
+# for i in modelList:
+#     with open(f'PartB/models/savedModels/{i}.pickle','wb') as f:
+#         pickle.dump(modelList[i],f,protocol=pickle.HIGHEST_PROTOCOL)
         
-modelJson=nn.to_json()
-with open('PartB/models/savedModels/nueralNetwork.json','w') as file:
-    file.write(modelJson)
-nn.save_weights('PartB/models/savedModels/nueralNetworkWeights.h5')
+# modelJson=nn.to_json()
+# with open('PartB/models/savedModels/nueralNetwork.json','w') as file:
+#     file.write(modelJson)
+# nn.save_weights('PartB/models/savedModels/nueralNetworkWeights.h5')
 
 
 y_val=np.log(y_val)
 lregMse=mean_squared_error(y_val,lreg.predict(X_val))
 nnMse=mean_squared_error(y_val,nn.predict(np.asarray(X_val).astype('float32')))
-treeMSe=mean_squared_error(y_val,tree.predict(X_val))
+forestMse=mean_squared_error(y_val,forest.predict(X_val))
+treeMse=mean_squared_error(y_val,tree.predict(X_val))
+knnMse=mean_squared_error(y_val,knn.predict(X_val))
+gboostMse=mean_squared_error(y_val,gboost.predict(X_val))
+cboostMse=mean_squared_error(y_val,cboost.predict(X_val))
 
 lregR2=r2_score(y_val,lreg.predict(X_val))
 nnR2=r2_score(y_val,nn.predict(np.asarray(X_val).astype('float32')))
+forestR2=r2_score(y_val,forest.predict(X_val))
 treeR2=r2_score(y_val,tree.predict(X_val))
+knnR2=r2_score(y_val,knn.predict(X_val))
+gboostR2=r2_score(y_val,gboost.predict(X_val))
+cboostR2=r2_score(y_val,cboost.predict(X_val))
 
+print('----------------------Performance on Test Data-----------------------------')
+print()
+print()
 print('The mse of Linear Model is: ',lregMse)
 print('The mse of Neural Network is: ', nnMse)
-print('The mse of Random Forest Model is: ',treeMSe)
+print('The mse of Random Forest Model is: ',forestMse)
+print('The mse of Decision Tree Model is: ',treeMse)
+print('The mse of Gradient Boosting Model is: ',gboostMse)
+print('The mse of Cat Boosting Model is: ',cboostMse)
+print('The mse of KNN Regressor Model is: ',knnMse)
 
 print('The r2 Score of Linear Model is: ',lregR2)
 print('The r2 Score of Neural Network is: ', nnR2)
-print('The r2 Score of Random Forest Model is: ',treeR2)
+print('The r2 Score of Random Forest Model is: ',forestR2)
+print('The r2 Score of Decision Tree Model is: ',treeR2)
+print('The r2 Score of Gradient Boosting Model is: ',gboostR2)
+print('The r2 Score of Cat Boosting Model is: ',cboostR2)
+print('The r2 Score of KNN Regressor Model is: ',knnR2)
 
+
+del modelList['history']
+
+modelList['nn']=nn
+
+performanceMatrix={}
+
+for i in modelList:
+    Xt=X_train
+    Xv=X_val
+    yt=np.log(y_train)
+    if i=='nn':
+        Xt=np.asarray(X_train).astype('float32')
+        Xv=np.asarray(X_val).astype('float32')
+    trainMse=mean_squared_error(yt,modelList[i].predict(Xt))
+    testMse=mean_squared_error(y_val,modelList[i].predict(Xv))
+    trainR2=r2_score(yt,modelList[i].predict(Xt))
+    testR2=r2_score(y_val,modelList[i].predict(Xv))
+    performanceMatrix[i]={'MSE':{'train':trainMse,'test':testMse},'R2':{'train':trainR2,'test':testR2}}
+
+# with open('PartB/models/performanceMatrix.pickle','wb') as f:
+#     pickle.dump(performanceMatrix,f,protocol=pickle.HIGHEST_PROTOCOL)
 
 
 

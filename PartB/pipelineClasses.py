@@ -8,7 +8,10 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.linear_model import LogisticRegression
 from models import linearRegression as lr
 from models import neuralNetwork as nn
+from models import rforest as rf
 from models import decisionTree as dt
+from models import boosting as boost
+from models import knn as knn
 from sklearn.metrics import mean_squared_error
 import tensorflow as tf
 import os 
@@ -32,7 +35,7 @@ class dropColumns(BaseEstimator,TransformerMixin):
     def transform(self,X):
         print(f'Dropping Columns : {self.dropCols}')
         X=X.drop(columns=list(self.dropCols),axis=1)
-        print(X.index.is_unique)
+        print('Is the index of our data frame unique ',X.index.is_unique)
         return X
     
     def fit_transform(self,X,y=None):
@@ -67,20 +70,27 @@ class dropColumns(BaseEstimator,TransformerMixin):
 
 
 
-# class standardize(BaseEstimator, TransformerMixin):
+class standardize(BaseEstimator, TransformerMixin):
 
-#     def __init__(self,cols):
-#         super().__init__()
-#         self.cols=cols
+    def __init__(self,cols):
+        super().__init__()
+        self.cols=cols
+        self.scaler=StandardScaler()
     
-#     def fit(self,X,y=None):
-#         return self
+    def fit(self,X,y=None):
+        return self
 
-#     def transform(self,X):
+    def fit_transform(self,X,y=None):
+        XScaled=self.scaler.fit_transform(X[self.cols])
+        for i,j in enumerate(self.cols):
+            X.loc[:,j]=XScaled[:,i]
+        return X
 
-#         scaler=StandardScaler()
-#         XScaled=scaler.fit_transform(X[self.cols])
-#         return XScaled
+    def transform(self,X):
+        XScaled=self.scaler.transform(X[self.cols])
+        for i,j in enumerate(self.cols):
+            X.loc[:,j]=XScaled[:,i]
+        return X
 
 class encoder(BaseEstimator, TransformerMixin):
 
@@ -150,23 +160,41 @@ class trainModels(BaseEstimator, TransformerMixin):
         super().__init__()
         self.linearModel=None
         self.neuralNetwork=None
+        self.forest=None
         self.tree=None
+        self.gboost=None
+        self.cboost=None
+        self.knn=None
 
     def fit(self,X,y=None):
         return self
     
     def fit_transform(self,X,y):
         #Train Linear Model
-        self.linearModel=lr.trainModel(X,np.log(y))
+        y=np.log(y)
+        print("Training Linear Rgression Model")
+        self.linearModel=lr.trainModel(X,y)
 
         #Train Neural Network
         optimizer=tf.keras.optimizers.Adam(1e-3)
         loss='mse'
         metrics=['mse']
         print(X.shape)
-        self.neuralNetwork=nn.trainNn(np.asarray(X).astype('float32'),np.log(y),optimizer=optimizer,loss=loss,metrics=metrics)
-        self.tree=dt.getBestEstimator(X,np.log(y))
-        return {'X_train':X,'linearModel':self.linearModel,'neuralNetwork':self.neuralNetwork,'tree':self.tree}
+        print('Training Neural Network Model')
+        self.neuralNetwork=nn.trainNn(np.asarray(X).astype('float32'),y,optimizer=optimizer,loss=loss,metrics=metrics)
+        print('Neural Network Training Complete!')
+        print('Training Random Forest  Regressor Model')
+        self.forest=rf.getBestEstimator(X,y)
+        print('Training Decision Tree Regressor Model')
+        self.tree=dt.decisionTree(X,y)
+        print('Training K-Nearest Neighbor Regressor Model')
+        self.knn=knn.knn(X,y)
+        print('Training Gradient Boosting Regressor Model')
+        self.gboost=boost.gradientBoost(X,y)
+        print('Training Cat Boost Regressor Model')
+        self.cboost=boost.catboost(X,y)
+        print('All models training Complete!!')
+        return {'X_train':X,'linearModel':self.linearModel,'neuralNetwork':self.neuralNetwork,'forest':self.forest,'tree':self.tree,'knn':self.knn,'gboost':self.gboost,'cboost':self.cboost}
 
     def transform(self,X):
         return X
