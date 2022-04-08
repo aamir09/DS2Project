@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error,r2_score
 def getBestEstimator(X,y):
     forest=RandomForestRegressor(oob_score=True,n_jobs=-1,random_state=11)
     params={'max_depth':[i for i in range(5,12)],'n_estimators':[50,100,125,150]}
-    search=GridSearchCV(estimator=forest,param_grid=params,scoring='r2',cv=5,return_train_score=True)
+    search=GridSearchCV(estimator=forest,param_grid=params,scoring='r2',cv=5,return_train_score=True,verbose=2)
     search.fit(X,y)
     print('Best parameters for random forest are:', search.best_params_)
     return search.best_estimator_

@@ -2,6 +2,9 @@ import streamlit as st
 import numpy as np
 import plotly as pt
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns 
+import pickle
 st.set_page_config(
      page_title="Indian Housing Data",
      page_icon="🧊",
@@ -167,15 +170,148 @@ st.latex('AI\ =w_1\cdot f_1+w_2\cdot f_2+w_3\cdot f_3+w_4\cdot f_4+w_5\cdot f_5+
 st.latex('HQLI = QHI + BAI +AI')
 st.latex('where\ w_i\ are\ the\ randomly\ initialized\ weights\, f_i\ are\ the\ feratures\ to\ be\ used.')
 
+eigth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Standardization:</b> We standardize our continious features using this operation, Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units. We take down the mean of the distribution to zero and the standard deviation to 1, stabalizing the variance and the learning process.[1]</b> </li></ul>'
+st.markdown(eigth,unsafe_allow_html=True) 
 
 
 ### Level 3 ###
 level3= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Level 3: Modelling</h3>'
 st.markdown(level3,unsafe_allow_html=True) 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Level 3 is the second and the last part of our end-to-end pipeline, where we train various machine learning and deep learning models. The transformed training set is taken from the cleaning pipeline and passed on to several regression models. The complete pipeline of level1 and level2 returns these models with the training data.</p>'
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Level 3 is the second and the last part of our end-to-end pipeline, where we train various machine learning and deep learning models. The transformed training set is taken from the cleaning pipeline and passed on to several regression models. The complete pipeline of level1 and level2 returns these models with the training data. We built 7 different regression models for our problem, from linear regression being the simplest to the most complex neural networks. Each models hyper paramerters were tuned using 3-fold cross validation using GridSearchCV. The best estimators for each model is saved and a performance matrix is also calculated which consist of r2 score and mse on train and test datasets. The following models were built during the training process:</p>'
 st.markdown(summary,unsafe_allow_html=True)
 
+first='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Linear Regression: </b>Linear Regression is a predictive modelling technique in which you model a dependent variable <i>y</i>  on an independent variable <i>X</i>, where x can be a single feature or a vector of features. The aim is to find a best fit line to the available data. The assumptions of the algorithm are simple, there should be a linear relationship between predictor(dependent variable) and the features(independent variables), Homoscedasticity, observations are independent of each other, the residuals are normally distributed.</li><ul>'
+st.markdown(first,unsafe_allow_html=True) 
+st.latex('y\ =beta\cdot X')
+
+second='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>K-Nearest Neighbors: </b>KNN regression is a non-parametric method that, in an intuitive manner, approximates the association between independent variables and the continuous outcome by averaging the observations in the same neighbourhood. The size of the neighbourhood needs to be set by the analyst or can be chosen using cross-validation to select the size that minimises the mean-squared error.[2]</li><ul>'
+st.markdown(second,unsafe_allow_html=True) 
+
+third='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Neural Network: </b>Neural networks are a series of algorithms that mimic the operations of a human brain to recognize relationships between vast amounts of data. As such, they tend to resemble the connections of neurons and synapses found in the brain. Neural networks with several process layers are known as "deep" networks and are used for deep learning algorithms.[3] We use six layers with varying neurons coupled with LeakyRelu activation. To prevent us from over fitting a precautionary early stopping callback is inserted which monitors the validation loss and if no improvement is observed inside a patience level, the training stops and best weights of the model are restored. To optimze our mse loss plain we are using Adam optimizer. </li><ul>'
+st.markdown(third,unsafe_allow_html=True) 
+
+fourth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Decision Tree: </b>Decision Trees are a type of Supervised Machine Learning (that is you explain what the input is and what the corresponding output is in the training data) where the data is continuously split according to a certain parameter. The tree can be explained by two entities, namely decision nodes and leaves. The leaves are the decisions or the final outcomes. And the decision nodes are where the data is split.[4] For regression the nodes are split upon the largest variance reduction and the predictions are the aggregated mean of the values of the leaf node in which the sample resides. The decision trees are built in a depth first manner from top to bottom and the complexity of the model increases as the depth of the tree increases, In our case the optimal depth of the decision tree after 3-fold cross validation came out to be 9.</li><ul>'
+st.markdown(fourth,unsafe_allow_html=True) 
+
+fifth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Bagging Ensembles: </b>Bagging is an ensemble based machine learning algorithm based on descision trees that creates an ensemble of strong learners and take the average of the output all the trees in the emsemble as an output in a an effort to decrease the variance of the predictions. Complex decision trees are prone to overfitting, a small change in the distribution of test data will become a cause of great fluctuation in the output and bagging tries to combat this problem.</li><ul>'
+st.markdown(fifth,unsafe_allow_html=True) 
+
+sixth='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Random Forest: </b>Random Forest is a similar algorithm like bagging, it creates an ensemble of strong learners fitted on different bootsrapped sample of the training data but the learners here are decorrelated with each other(only a randomly chosen fraction of the features are given to each node to configure its split). This lack of correlation help us lower down the variance of the predictions further more.</li><ul>'
+st.markdown(sixth,unsafe_allow_html=True) 
+
+seventh='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Gradient Boosting: </b>In gradient boosting machines, or simply, GBMs, the learning procedure consecutively fits new models to provide a more accurate estimate of the response variable. The principle idea behind this algorithm is to construct the new base-learners to be maximally correlated with the negative gradient of the loss function, associated with the whole ensemble. The loss functions applied can be arbitrary, but to give a better intuition, if the error function is the classic squared-error loss, the learning procedure would result in consecutive error-fitting. In general, the choice of the loss function is up to the researcher, with both a rich variety of loss functions derived so far and with the possibility of implementing ones own task-specific loss.[5]</li><ul>'
+st.markdown(seventh,unsafe_allow_html=True) 
 
 ##### Model Comparison ##########
 comparison= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Model Comparison</h3>'
 st.markdown(comparison,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In this section we compare all machine learning models trained for our problem on the basis of their performance on train and test data using various metrics and methods.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+mse= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Mean Squared Error</h3>'
+st.markdown(mse,unsafe_allow_html=True) 
+
+performance=None
+with open('PartB\models\performanceMatrix.pickle','rb') as f:
+  performance=pickle.load(f)
+
+col1, col2= st.columns([5,5])
+
+mseTuple=[(performance[i]['MSE']['train'],performance[i]['MSE']['test']) for i in performance]
+nameMapping={'nn':'Neural Network','lreg':'Linear Regression','cboost':'CatBoost','tree':'Decision Tree','forest':'Random Forest','knn':'KNN','gboost':'Gradient Boosting','bagging':'Bagging Ensemble'}
+names=[nameMapping[i] for i in performance]
+train,test=zip(*mseTuple)
+
+mseDf=pd.DataFrame()
+mseDf['names']=names
+mseDf['train']=train
+mseDf['test']=test
+
+with col2:
+  fig,ax=plt.subplots()
+  diff=mseDf.set_index('names')['train']-mseDf.set_index('names')['test']
+  np.abs(diff.sort_values()).plot.barh(ax=ax,width=0.4)
+  ax.set_title('Generalization Error',fontsize=20)
+  ax.set_xlabel('Error',fontsize=15)
+  ax.set_ylabel('Models',fontsize=15)
+  ax.spines['top'].set_visible(False)
+  ax.spines['right'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  st.pyplot(fig,height=200)
+with col1:
+  fig,ax=plt.subplots()
+  mseDf.set_index('names').sort_values(['test','train']).plot.barh(ax=ax,width=0.4)
+  ax.set_title('Performance on Test & Train Set',fontsize=20)
+  ax.set_xlabel('MSE',fontsize=15)
+  ax.set_ylabel('Models',fontsize=15)
+  ax.spines['top'].set_visible(False)
+  ax.spines['right'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  st.pyplot(fig,height=200)
+
+
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Random forest outperforms every other model in terms of test mse while the most complex network in the kitty; the neural network has the worst mse on the test set. The above graph is sorted with respect to the test set mse. The generalization error is the difference between the mse of train set and test set. Random forest seems to generalise poorly as compared to other models with higher mse.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+r2score= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">R2 Score</h3>'
+st.markdown(r2score,unsafe_allow_html=True) 
+
+r2Tuple=[(performance[i]['R2']['train'],performance[i]['R2']['test']) for i in performance]
+trainr,testr=zip(*r2Tuple)
+r2Df=pd.DataFrame()
+r2Df['names']=names
+r2Df['train']=trainr
+r2Df['test']=testr
+
+col1, col2= st.columns([5,5])
+with col2:
+  fig,ax=plt.subplots()
+  diff=r2Df.set_index('names')['train']-r2Df.set_index('names')['test']
+  np.abs(diff.sort_values()).plot.barh(ax=ax,width=0.4)
+  ax.set_title('Generalization Error',fontsize=20)
+  ax.set_xlabel('Error',fontsize=15)
+  ax.set_ylabel('Models',fontsize=15)
+  ax.spines['top'].set_visible(False)
+  ax.spines['right'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  st.pyplot(fig,height=200)
+
+with col1:
+  fig,ax=plt.subplots()
+  r2Df.set_index('names').sort_values(['test','train']).plot.barh(ax=ax,width=0.4)
+  ax.set_title('Performance on Test & Train Set',fontsize=20)
+  ax.set_xlabel('R2 Score',fontsize=15)
+  ax.set_ylabel('Models',fontsize=15)
+  ax.spines['top'].set_visible(False)
+  ax.spines['right'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  st.pyplot(fig,height=200)
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Neural Network again the worst performer and is not able to explain any variance of the features in the predictions. The Random Forest does bag the highest rank but again the generalization error is quite high, in comparison, bagging ensemble looks more robust as the generalization is low and test mse and r2score are similar to that of Random Forest. Since the bagging model is more robust we choose the bagging model as our best performing model.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+#### Understanding the Model #### 
+references= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Model Explanantion</h3>'
+st.markdown(references,unsafe_allow_html=True) 
+
+##### References #######
+
+references= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">References</h3>'
+st.markdown(references,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[4] Decision Trees for Classification: A Machine Learning Algorithm, https://www.xoriant.com/blog/product-engineering/decision-trees-machine-learning-algorithm.html</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[5] Gradient boosting machines, a tutorial, https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full</p>'
+st.markdown(summary,unsafe_allow_html=True)

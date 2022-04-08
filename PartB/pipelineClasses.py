@@ -12,6 +12,7 @@ from models import rforest as rf
 from models import decisionTree as dt
 from models import boosting as boost
 from models import knn as knn
+from models import bagging
 from sklearn.metrics import mean_squared_error
 import tensorflow as tf
 import os 
@@ -165,6 +166,8 @@ class trainModels(BaseEstimator, TransformerMixin):
         self.gboost=None
         self.cboost=None
         self.knn=None
+        self.xgboost=None
+        self.bagging=None
 
     def fit(self,X,y=None):
         return self
@@ -189,12 +192,16 @@ class trainModels(BaseEstimator, TransformerMixin):
         self.tree=dt.decisionTree(X,y)
         print('Training K-Nearest Neighbor Regressor Model')
         self.knn=knn.knn(X,y)
+        print('Training Bagging Model')
+        self.bagging=bagging.getBestEstimator(X,y)
         print('Training Gradient Boosting Regressor Model')
         self.gboost=boost.gradientBoost(X,y)
         print('Training Cat Boost Regressor Model')
         self.cboost=boost.catboost(X,y)
+        # print('Training XgBoost Model')
+        # self.xgboost=boost.xgboost(X,y)
         print('All models training Complete!!')
-        return {'X_train':X,'linearModel':self.linearModel,'neuralNetwork':self.neuralNetwork,'forest':self.forest,'tree':self.tree,'knn':self.knn,'gboost':self.gboost,'cboost':self.cboost}
+        return {'X_train':X,'linearModel':self.linearModel,'neuralNetwork':self.neuralNetwork,'forest':self.forest,'tree':self.tree,'knn':self.knn,'bagging':self.bagging,'gboost':self.gboost,'cboost':self.cboost}
 
     def transform(self,X):
         return X
