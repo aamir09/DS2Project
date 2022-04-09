@@ -23,13 +23,13 @@ st.markdown(title,unsafe_allow_html=True)
 
 contrib_title= '<h2 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.6rem;">Contributors</h2>'
 st.markdown(contrib_title,unsafe_allow_html=True) 
-contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Aamir Ahmad Ansari <a href="https://www.github.com" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.github.com" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
+contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Aamir Ahmad Ansari <a href="https://github.com/aamir09" target="_blank" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.linkedin.com/in/aamir07/" target="_blank" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
 st.markdown(contributors,unsafe_allow_html=True) 
-contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Ibtisam <a href="https://www.github.com" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.github.com" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
+contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Ibtisam <a href="https://github.com/Ibtisam-Mohammad" target="_blank" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.linkedin.com/in/ibtim" target="_blank" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
 st.markdown(contributors,unsafe_allow_html=True)
-contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Rohit Raj <a href="https://www.github.com" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.github.com" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
+contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Rohit Raj <a href="https://github.com/rraj29" target="_blank" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.linkedin.com/in/certifieddatascientist/" target="_blank" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
 st.markdown(contributors,unsafe_allow_html=True)  
-contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Hemani Shah <a href="https://www.github.com" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.github.com" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
+contributors='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;">Hemani Shah <a href="https://github.com/hemanishah00" target="_blank" style="color=#fffff;text-decoration:none">GitHub </a>| <a href="https://www.linkedin.com/in/hemani-shah-780a461b2/" target="_blank" style="color=#fffff;text-decoration:none">LinkedIn</a></li><ul>'
 st.markdown(contributors,unsafe_allow_html=True) 
 
 ### Summary ###
@@ -293,8 +293,70 @@ summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#f
 st.markdown(summary,unsafe_allow_html=True)
 
 #### Understanding the Model #### 
-references= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Model Explanantion</h3>'
-st.markdown(references,unsafe_allow_html=True) 
+understanding= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Understanding the Model</h3>'
+st.markdown(understanding,unsafe_allow_html=True) 
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The understanding of machine learning model has a great importance in real world. If model classifes an image correctly then what are the features that is considering important in the image to generate such predictions? IF you are working in a company solving business problems, the stake holder would want to know what makes your model provide that solution. While worling in a medical field for instance in a disease detection system, you will be asked how your model is detecting the disease. Hence understsanding and explaining your model is a cruical part of being a data scientist and a machine learning practitioners. Another advantage of knwoing your model is that you can debug your model. If you know what is going wrong then probabilities are high that you can fix it, right?</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The simplest model to understand is the Linear Regression model because the weights directly has a say in the impact the features make but in complex models like neural networks and tree ensembles it might be a little bit more difficult to interpret them and these models are called as black box models. Our best model happens to be a tree ensemble; the bagging tree model. We will globally inspect this model by retrieving the feature importaces that will idicate what ticks our model globally and which features affect the most in the decision making. We will then dive into a local inspection of the predictions with the most error and the least error and get know what features played a role in this process.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+globalImp= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Global Feature Importance</h3>'
+st.markdown(globalImp,unsafe_allow_html=True) 
+
+col1, col2, col3= st.columns([3,4,3])
+
+with col1:
+  st.write('')
+
+with col2:
+  st.image('app/images/featureImportanceGlobal.jpeg','Figure 5: Global Feature Importance')
+
+with col3:
+  st.write('')
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Figure 5 conveys the feature importance calculated as the average decrease in variance in the bagging ensemble shown in green and permuation feature importance calculated by permuting a feature column at once and noticing the drop in the oberving metrics shown in grey. These are the top 12 features who contributes gloabally in a predictions, the impact of the rest are negligible. Area is an expected feature to pop up in such metrics and has been ranked the top most feature that contributes globally in making predictions. It is interesting to see that onehot encoded variables for cities are considered importance as well which do indicate that the model is learning from the trend of prices in each city. Number of bedrooms has also made it place and it makes sense as that the price a house with more bedroom is more than a house with less number of bedrooms. Resale, availability of car parking and intercom are also key factors. The engineered feature HQLI has a relatively higher importance to the 30 or more features below it. Rain water harvesting is interesting to see in the mix.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+localImp= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Local Feature Importance</h3>'
+st.markdown(localImp,unsafe_allow_html=True) 
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">We will asses the individual instances, an instance with lowest squared error and an instance with highest squared error and inspect what features affected their results. To make this investigation happen we will use LOCAL INTERPRETABLE MODEL-AGNOSTIC EXPLANATIONS(LIME) algorithm that is a technique that approximates any black box machine learning model with a local, interpretable model to explain each individual prediction.[6]</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Lets examine the prediction with the least squared error and the most squared error. Left: The sample is of the test set at the index 2758, the true value at log scale is 15.75 and having the least squared error. Right:  The sample is of the test set at the index 2917, the true value at log scale is 19.20, having the greatest squared error. </p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+with open('PartB\models\savedModels\leastExplanation.pickle','rb') as f:
+  minHtml=pickle.load(f)
+
+with open('PartB\models\savedModels\mostExplanation.pickle','rb') as f:
+  mostHtml=pickle.load(f)
+
+col1,col2, col3= st.columns([5,1,5])
+
+test=pd.read_csv('test.csv').drop('Unnamed: 0',axis=1)
+sample1=test.iloc[2758,:]
+sample2=test.iloc[2917,:]
+
+with col1:
+  st.dataframe(sample1,500,100)
+  st.write('')
+  white_background = "<style>:root {background-color: #ffffff}</style>"
+  st.components.v1.html(white_background + minHtml,width=800,height=500)
+
+with col2:
+  st.write('')
+
+with col3:
+  st.dataframe(sample2,500,100)
+  st.write('')
+  white_background = "<style>:root {background-color: #ffffff}</style>"
+  st.components.v1.html(white_background + mostHtml,width=800,height=500)
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The interpretation for Left: The location is in Bangalore and not Mumbai hence Mumbai being 0 will decrease the final output score(Mumbai is expensive than other cities hence it makes sense), the location is not Kolkata which add up in the final predictions, simiarly positive weighted variables adds to the final prediction score while negatively weighted ones, decrease it. Right: The sample not being from Mumbai drops it Price as well as having less area. What works in its favor is that it is from Delhi and not from Kolkata but the price is still off by alot. The binary variable here is holding the key as we saw in even the most accurate one on the left.</p>'
+st.markdown(summary,unsafe_allow_html=True)
 
 ##### References #######
 
@@ -314,4 +376,7 @@ summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#fffff
 st.markdown(summary,unsafe_allow_html=True)
 
 summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[5] Gradient boosting machines, a tutorial, https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[6] What is Local Interpretable Model-Agnostic Explanations (LIME)?, a tutorial, https://c3.ai/glossary/data-science/lime-local-interpretable-model-agnostic-explanations/</p>'
 st.markdown(summary,unsafe_allow_html=True)
