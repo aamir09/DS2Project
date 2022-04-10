@@ -35,16 +35,44 @@ st.markdown(contributors,unsafe_allow_html=True)
 ### Summary ###
 summary_title= '<h2 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.6rem;">Summary</h2>'
 st.markdown(summary_title,unsafe_allow_html=True) 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ante in nibh mauris cursus mattis molestie. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Id porta nibh venenatis cras sed felis. Ut ornare lectus sit amet est placerat in. Diam sollicitudin tempor id eu nisl nunc. Faucibus turpis in eu mi bibendum neque. Integer eget aliquet nibh praesent. Tellus molestie nunc non blandit massa enim nec dui. Rutrum quisque non tellus orci ac. Varius sit amet mattis vulputate enim. Ac auctor augue mauris augue. Nam aliquam sem et tortor consequat id. Mattis rhoncus urna neque viverra justo nec ultrices dui sapien. Viverra adipiscing at in tellus integer. Eget aliquet nibh praesent tristique magna sit amet purus. Faucibus purus in massa tempor nec feugiat.</p>'
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In this project, we delve into Indian housing data, looking at the 2011 Indian Housing Census Data as well as house data from Indias metropolite cities. The exploratory data analysis section of the project answers several questions regarding houses in India for the year 2011 and presents some interesting statistics. Predictive modelling of housing prices in Indias metro cities, including Delhi, Mumbai, Bangalore, Chennai, Kolkata, and Hyderabad, is covered in the second section, which is modelling. To compare and pick which model is most suited to our situation, we train linear models, tree-based models, distance-based models, and neural network-based models. We then explain the best model using several approaches.</p>'
 st.markdown(summary,unsafe_allow_html=True) 
 
 ### EDA ###
 eda_title= '<h2 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.6rem;">Exploratory Data Analysis</h2>'
 st.markdown(eda_title,unsafe_allow_html=True) 
-col1,col2=st.columns([0.5,0.5])
-col1.image('app/images/goodSates.jpeg',caption='States with Good Housing Conditions',width=1200,use_column_width=True)
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ante in nibh mauris cursus mattis molestie. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Id porta nibh venenatis cras sed felis. Ut ornare lectus sit amet est placerat in. Diam sollicitudin tempor id eu nisl nunc. Faucibus turpis in eu mi bibendum neque. Integer eget aliquet nibh praesent. Tellus molestie nunc non blandit massa enim nec dui. Rutrum quisque non tellus orci ac. Varius sit amet mattis vulputate enim. Ac auctor augue mauris augue. Nam aliquam sem et tortor consequat id. Mattis rhoncus urna neque viverra justo nec ultrices dui sapien. Viverra adipiscing at in tellus integer. Eget aliquet nibh praesent tristique magna sit amet purus. Faucibus purus in massa tempor nec feugiat.</p>'
-col2.markdown(summary,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In this section we will explore the Indian Housing Census Data 2011, which is available,<a href="https://censusindia.gov.in/2011census/HLO/HL_PCA/Houselisting-housing-HLPCA.html" target="_blank" style="color=#fffff;text-decoration:none">here</a>. The housing data consist of various features for including state of the condition of houses, materials used in walls and roofs, latrine facilities information, water sources information, basic amenities availibilty and much more. We aim to answer interesting questions about India in 2011 with help of the data set using visualization and explaining their inferences.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Which states in India have good housing conditions and what are some factors affecting this?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([1,8,1])
+with col1:
+  st.write('')
+col2.image('app/images/goodSates.jpeg',caption='States with Good Housing Conditions',width=1200,use_column_width=True)
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Small Union territories like Daman Diu and Lakshadweep Islands have outclassed big metro cities of India in the year of 2011 for having houses in good condition in per 100 houses. The sizes and population of the Union Territories might be argued with but the fact that they still register larger percentages of houses in good condition is astonishinhg.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In 2021, According to the reports of Global Health Security Index, India is ranked 68th out of 196 countries in health security. The conditions werent very good in 2011 either, are there any insights that can help us understand the cause?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([1,8,1])
+with col1:
+  st.write('')
+col2.image('app/images/healthIndicators.jpeg',caption='Health Indicators of India',width=1200,use_column_width=True)
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The x-axis represents numbers per 100. On an average than more 25 houses per 100 houses in India has a family size of 6-8 people. Only 20 houses per 100 houses in India have accsess to clean treated water and th rest still rely heavily on sources like Handpumps, uncovered wells, untreated tap water etc. A little less than 70 houses per 100 houses in Inida does not have drinking water sources in their premises. Only 32 house per 100 houses in India have washrooms, the rest rely on littering in public and very few on public washrooms. Almost 60 percent houses does not even have a drainage to treat their waste water, 30 percent have open drainages and only 10 percent have access to closed drainages. Factors like low quality of drinking water, washroom facilities not available in houses, littering in public, no means for waster water to go out and get treated with big sizes of families may be some of the reasons for low health quality of India.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
 
 
 

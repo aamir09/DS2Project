@@ -12,8 +12,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error,r2_score
 
 
-
-dirlist=os.listdir('A:/Datasets/DS2/')
+################################ CREATING MASTER DATA ################################
+dirlist=os.listdir('PartB/Datasets/')
 
 masterData=cmd.createMasterDataSet(dirlist)
 
@@ -35,7 +35,7 @@ X_val=pd.DataFrame(X_val,columns=X.columns)
 y_train=pd.Series(y_train,name='Price')
 y_val=pd.Series(y_val,name='Price')
 
-### PIPELINE INTEGRATION ###
+################################ PIPELINE INTEGRATION ################################
 
 dropcols=['Location']
 
@@ -71,6 +71,8 @@ X_val=masterPipeline.transform(X_val)
 print(X_val)
 
 
+################################ SAVING MODELS ################################
+
 X_train=res['X_train']
 lreg=res['linearModel']
 nn=res['neuralNetwork']['model']
@@ -81,7 +83,7 @@ knn=res['knn']
 gboost=res['gboost']
 cboost=res['cboost']
 bagging=res['bagging']
-# xgboost=res['xgboost']
+
 
 modelList={'lreg':lreg,'history':history,'forest':forest,'tree':tree,'bagging':bagging,'knn':knn,'gboost':gboost,'cboost':cboost}
 
@@ -94,7 +96,7 @@ with open('PartB/models/savedModels/nueralNetwork.json','w') as file:
     file.write(modelJson)
 nn.save_weights('PartB/models/savedModels/nueralNetworkWeights.h5')
 
-
+################################ Calculating PERFORMANCE MATRIX ################################
 y_val=np.log(y_val)
 lregMse=mean_squared_error(y_val,lreg.predict(X_val))
 nnMse=mean_squared_error(y_val,nn.predict(np.asarray(X_val).astype('float32')))
@@ -104,7 +106,7 @@ knnMse=mean_squared_error(y_val,knn.predict(X_val))
 baggingMse=mean_squared_error(y_val,bagging.predict(X_val))
 gboostMse=mean_squared_error(y_val,gboost.predict(X_val))
 cboostMse=mean_squared_error(y_val,cboost.predict(X_val))
-# xgboostMse=mean_squared_error(y_val,xgboost.predict(X_val))
+
 
 
 lregR2=r2_score(y_val,lreg.predict(X_val))
@@ -115,7 +117,7 @@ knnR2=r2_score(y_val,knn.predict(X_val))
 baggingR2=r2_score(y_val,bagging.predict(X_val))
 gboostR2=r2_score(y_val,gboost.predict(X_val))
 cboostR2=r2_score(y_val,cboost.predict(X_val))
-# xgoostR2=r2_score(y_val,xgboost.predict(X_val))
+
 
 print('----------------------Performance on Test Data-----------------------------')
 print()
@@ -127,7 +129,6 @@ print('The mse of Decision Tree Model is: ',treeMse)
 print('The mse of Bagging Model is: ',baggingMse)
 print('The mse of Gradient Boosting Model is: ',gboostMse)
 print('The mse of Cat Boosting Model is: ',cboostMse)
-# print('The mse of  XgBoosting Model is: ',xgboostMse)
 print('The mse of KNN Regressor Model is: ',knnMse)
 print()
 print('The r2 Score of Linear Model is: ',lregR2)
@@ -139,7 +140,7 @@ print('The r2 Score of Gradient Boosting Model is: ',gboostR2)
 print('The r2 Score of Cat Boosting Model is: ',cboostR2)
 print('The r2 Score of KNN Regressor Model is: ',knnR2)
 
-
+################################ SAVING PERFORMANCE MATRIX ##############################
 del modelList['history']
 
 modelList['nn']=nn

@@ -22,6 +22,10 @@ import os
 
 #Dropping Columns
 class dropColumns(BaseEstimator,TransformerMixin):
+    '''Returns a data frame after removing the specifeid columns.
+       parameters: 
+       cols -> list: The columns to be removed
+    '''
     def __init__(self,cols):
         #Calling the constructor method of both base classes 
         super().__init__()
@@ -44,34 +48,12 @@ class dropColumns(BaseEstimator,TransformerMixin):
         X=X.drop(columns=list(self.dropCols),axis=1)
         return X
 
-#Imputation 
-
-# class Imputer(BaseEstimator, TransformerMixin):
-#     def __init__(self,cols):
-#         super().__init__()
-
-#         self.cols=cols
-#         self.imputer=None
-    
-#     def fit(self,X,y=None):
-#         self.imputer=IterativeImputer(random_state=2022)
-#         return self
-
-#     def transform(self,X):
-#         XImputed=self.imputer.transform(X[self.cols])
-#         XNew=pd.DataFrame(XImputed,columns=self.cols)
-#         return XNew
-        
-    # def fit_transform(self,X,y=None):
-    #     self.imputer=IterativeImputer(random_state=2022)
-    #     XImputed=self.imputer.fit_transform(X[self.cols])
-    #     XNew=pd.DataFrame(XImputed,columns=self.cols)
-    #     return XNew
-
-
-
 
 class standardize(BaseEstimator, TransformerMixin):
+    ''' Returns a standardized version of dataframe. The standardization takes place for the user given columns.
+        parameters:
+        cols-> list: Columns to be standardized in the dataframe.
+    '''
 
     def __init__(self,cols):
         super().__init__()
@@ -94,6 +76,10 @@ class standardize(BaseEstimator, TransformerMixin):
         return X
 
 class encoder(BaseEstimator, TransformerMixin):
+    ''' Returns a dataframe inclusive if onehot encoded variables of the specified columns.
+        parameters: 
+        cols->list: Columns for which one hot encodeing is to be done. It drops the columns after creating it dummies.
+    '''
 
     def __init__(self,cols):
         super().__init__()
@@ -115,32 +101,11 @@ class encoder(BaseEstimator, TransformerMixin):
             X=pd.concat([X,dummies],axis=1)
         return X
 
-
-class categoricalImputer(BaseEstimator, TransformerMixin):
-
-    def __init__(self,cols):
-        super().__init__()
-
-        self.cols=cols
-        self.imputer=SimpleImputer(strategy='most_frequent')
-
-    def fit(self,X,y=None):
-        return self
-
-    def fit_transform(self,X,y=None):
-        XImputed=self.imputer.fit_transform(X[self.cols])
-        X[self.cols]=XImputed
-        print(X.isna().sum())
-        return X
-
-    def transform(self,X):
-        XImputed=self.imputer.fit_transform(X[self.cols])
-        X[self.cols]=XImputed
-        return X
 
 
 #Nan Replacer
 class replaceWithNan(BaseEstimator, TransformerMixin):
+    ''' Returns a dataframe with replacing missing indicator values by np.nan'''
 
     def __init__(self):
         super().__init__()
@@ -157,6 +122,8 @@ class replaceWithNan(BaseEstimator, TransformerMixin):
 
 
 class trainModels(BaseEstimator, TransformerMixin):
+    ''' Returns a dictionary of trained models and train data on fit_transform and transforms the validation sets when transform function is called upon.
+    '''
     def __init__(self):
         super().__init__()
         self.linearModel=None
@@ -208,6 +175,11 @@ class trainModels(BaseEstimator, TransformerMixin):
 
 
 class outlierHandling(BaseEstimator, TransformerMixin):
+    ''' Deals with ouliers in the given columns and return a dataframe with these mdoification. The outliers below the 25% qunatile are replaced with 
+        it and the oulier above 75% quantile are replaced with the 75% quantile value. 
+        parameters:
+        cols->list: A list of column name that contains outliers.
+    '''
     def __init__(self,cols):
         super().__init__()
         self.cols = cols
@@ -243,6 +215,11 @@ class outlierHandling(BaseEstimator, TransformerMixin):
 
 
 class addBin(BaseEstimator, TransformerMixin):
+    '''Returns a data frame with AreaType variable being added to the dataframe on the bases if the Area of the House.
+    1  Small
+    2  Medium
+    3  Large
+    4  Very Large '''
     def __init__(self):
         super().__init__()
         self.tf=None
@@ -274,6 +251,12 @@ class addBin(BaseEstimator, TransformerMixin):
 
 
 class customImputer(BaseEstimator, TransformerMixin):
+    ''' Return a dataframe of imputed nan values. The strategy to impute the Nan values is for each feature calculaate the mode for each AreaType, check in which AreaType the sample lies
+        and fill the Nan value with the mode of that feature corresponsing to that AreaType
+        
+        paramters:
+        cols->list: A list of column conatining Null values
+        '''
 
     def __init__(self,cols):
         super().__init__()
@@ -344,6 +327,7 @@ class customImputer(BaseEstimator, TransformerMixin):
         return X
         
 class AddHQLI(BaseEstimator, TransformerMixin):
+        '''Returns a dataframe with HQLI feature added to the dataframe. '''
         def __init__(self):
             super().__init__()
             self.qhi=None
