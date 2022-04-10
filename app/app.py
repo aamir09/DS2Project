@@ -355,10 +355,10 @@ st.markdown(summary,unsafe_allow_html=True)
 summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Lets examine the prediction with the least squared error and the most squared error. Left: The sample is of the test set at the index 2758, the true value at log scale is 15.75 and having the least squared error. Right:  The sample is of the test set at the index 2917, the true value at log scale is 19.20, having the greatest squared error. </p>'
 st.markdown(summary,unsafe_allow_html=True)
 
-with open('PartB\models\savedModels\leastExplanation.pickle','rb') as f:
+with open('PartB/models/savedModels/leastExplanation.pickle','rb') as f:
   minHtml=pickle.load(f)
 
-with open('PartB\models\savedModels\mostExplanation.pickle','rb') as f:
+with open('PartB/models/savedModels/mostExplanation.pickle','rb') as f:
   mostHtml=pickle.load(f)
 
 col1,col2, col3= st.columns([5,1,5])
