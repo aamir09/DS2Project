@@ -240,7 +240,7 @@ mse= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font
 st.markdown(mse,unsafe_allow_html=True) 
 
 performance=None
-with open('PartB\models\performanceMatrix.pickle','rb') as f:
+with open('PartB/models/performanceMatrix.pickle','rb') as f:
   performance=pickle.load(f)
 
 col1, col2= st.columns([5,5])
@@ -293,6 +293,17 @@ r2Df['train']=trainr
 r2Df['test']=testr
 
 col1, col2= st.columns([5,5])
+with col1:
+  fig,ax=plt.subplots()
+  r2Df.set_index('names').sort_values(['test','train']).plot.barh(ax=ax,width=0.4)
+  ax.set_title('Performance on Test & Train Set',fontsize=20)
+  ax.set_xlabel('R2 Score',fontsize=15)
+  ax.set_ylabel('Models',fontsize=15)
+  ax.spines['top'].set_visible(False)
+  ax.spines['right'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  st.pyplot(fig,use_column_width=True)
+
 with col2:
   fig,ax=plt.subplots()
   diff=r2Df.set_index('names')['train']-r2Df.set_index('names')['test']
@@ -303,18 +314,9 @@ with col2:
   ax.spines['top'].set_visible(False)
   ax.spines['right'].set_visible(False)
   ax.spines['bottom'].set_visible(False)
-  st.pyplot(fig,height=200)
+  st.pyplot(fig,use_column_width=True)
 
-with col1:
-  fig,ax=plt.subplots()
-  r2Df.set_index('names').sort_values(['test','train']).plot.barh(ax=ax,width=0.4)
-  ax.set_title('Performance on Test & Train Set',fontsize=20)
-  ax.set_xlabel('R2 Score',fontsize=15)
-  ax.set_ylabel('Models',fontsize=15)
-  ax.spines['top'].set_visible(False)
-  ax.spines['right'].set_visible(False)
-  ax.spines['bottom'].set_visible(False)
-  st.pyplot(fig,height=200)
+
 
 summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Neural Network again the worst performer and is not able to explain any variance of the features in the predictions. The Random Forest does bag the highest rank but again the generalization error is quite high, in comparison, bagging ensemble looks more robust as the generalization is low and test mse and r2score are similar to that of Random Forest. Since the bagging model is more robust we choose the bagging model as our best performing model.</p>'
 st.markdown(summary,unsafe_allow_html=True)
