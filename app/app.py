@@ -73,7 +73,103 @@ with col3:
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The x-axis represents numbers per 100. On an average than more 25 houses per 100 houses in India has a family size of 6-8 people. Only 20 houses per 100 houses in India have accsess to clean treated water and th rest still rely heavily on sources like Handpumps, uncovered wells, untreated tap water etc. A little less than 70 houses per 100 houses in Inida does not have drinking water sources in their premises. Only 32 house per 100 houses in India have washrooms, the rest rely on littering in public and very few on public washrooms. Almost 60 percent houses does not even have a drainage to treat their waste water, 30 percent have open drainages and only 10 percent have access to closed drainages. Factors like low quality of drinking water, washroom facilities not available in houses, littering in public, no means for waster water to go out and get treated with big sizes of families may be some of the reasons for low health quality of India.</p>'
 st.markdown(summary,unsafe_allow_html=True) 
 
+#Q3
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In 2011, which states used most eco-friendly and non eco-friendly fuels for cooking?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
 
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/cookingFuel.jpeg',caption='State Wise use of Types Cooking Fuel')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The green and grey bars represents eco-friendly and non eco-friendly fuels used in different states,the intution here is to show the proportionality in which they were used in 2011. Delhi and Chandigarh used the most eco-friedly cooking fuels while Meghalaya and Jharkhand were on the opposite track. Big states like Maharashtra, Uttar Pradesh, Gujarat and Rajasthan still on majiority use non eco-friendly fuels, which is a concern with respect to environment and the health of the individuals using them.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+#Q4
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What were the eco-friendly fuels Delhi and Chandigarh used?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/cookingFuelTop2.jpeg',caption='Types of Fuels Eco-Friendly Fuels Used')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">It can be observed for both the states that LPG/CNG is the most commonly used fuel for cooking followed by Keroscene. Electricity was used reluctanty by both the states.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+
+#Q5
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What were the non eco-friendly fuels Meghalaya and Jharkahand used?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/cookingFuelbottom2.jpeg',caption='Types of Fuels Non Eco-Friendly Fuels Used')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">It can be observed for both the states that Firewood is the most commonly used fuel for cooking. Meghalaya seldom used any other fuel while Jharkhand uses variety of them.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+#Q6
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In which states of India in 2011 does most of Households had the electrnic gadgets?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/gadgets.jpeg',caption='States With Households Having Electronic Items.')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The observations tell that in NCT of Delhi more than 80 percent households had electronic items/gadgets at home, followed closely by Tamil Nadu and Kerala. Jharkhand again at the bottom of yet another metric , accompained by Bihar. </p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+#Q7
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Distribution of Share of Permanent Houses between Rural and Urban India in 2011?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([3,4,3])
+with col1:
+  st.write('')
+col2.image('app/images/PeramanentHouses.jpeg',caption='Share of Permanent Houses')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Rural India had almost half as many permanent houses as in Urban India in 2011.  </p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+#Q8 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What types of latrine flushes were popular in households of different states of India?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/laterineFlushes.jpeg',caption='Laterine Flush Systems Used in India')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Piped sewage system looks like a luxuxry only available at capacity in Chandigarh and New Delhi. Rest of India still uses Septic Tanks for onsite waste water disposal.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">More interesting questions are answered in the notebook available at <a href="https://github.com/aamir09/DS2Project" target="_blank" style="color=#fffff;text-decoration:none">GitHub</a>.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
 
 ### Modelling ###
 
