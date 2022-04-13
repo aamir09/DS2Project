@@ -21,8 +21,9 @@ Our main.py contains the general pipeline used for our solution:
 ![image](https://user-images.githubusercontent.com/62461730/163243136-c918b192-f0d3-4876-9e1d-696e965a40fd.png)
 
  
-Level 1: Creating Master Data: combining the files for the six cities(using functions defined in CreateMasterDataset file)
-Level 2: Cleaning Pipeline(functions defined in pipelineClasses file): 
+### Level 1: Creating Master Data: combining the files for the six cities(using functions defined in CreateMasterDataset file)
+
+### Level 2: Cleaning Pipeline(functions defined in pipelineClasses file): 
 
 •	Drops Unecessary Columns
 
@@ -40,7 +41,7 @@ Level 2: Cleaning Pipeline(functions defined in pipelineClasses file):
 
 •	Standardization
 
-Level 3: Modelling
+### Level 3: Modelling
 
 •	Linear Regression
 
