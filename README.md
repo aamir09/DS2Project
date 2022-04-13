@@ -23,22 +23,39 @@ Our main.py contains the general pipeline used for our solution:
  
 Level 1: Creating Master Data: combining the files for the six cities(using functions defined in CreateMasterDataset file)
 Level 2: Cleaning Pipeline(functions defined in pipelineClasses file): 
+
 •	Drops Unecessary Columns
+
 •	Replace NaN Values
+
 •	Add Area Bins
+
 •	Custom Imputer
+
 •	Handle Outliers
+
 •	One Hot Encoder
+
 •	Feature Engineering: Added HQLI
+
 •	Standardization
+
 Level 3: Modelling
+
 •	Linear Regression
+
 •	K-Nearest Neighbors
+
 •	Neural Network
+
 •	Decision Tree
+
 •	Bagging Ensembles
+
 •	Random Forest
+
 •	Gradient Boosting
+
 Code for all the models have been saved in the folder Part B/models. The model weights have been saved in PartB/models/savedModels.
 We then find the mse and R2 scores of each model and compare them.
 We also visualized local and global feature importance to understand the model better. This code can be found in eda and eda2 files.
