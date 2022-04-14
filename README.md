@@ -2,13 +2,48 @@
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
+•	Visualized and interpreted the correlations of various fields.
+o	We find insights like:
+	We find a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
+
+![image](https://user-images.githubusercontent.com/62461730/163445913-ccaea730-6521-4633-9669-6b7076e848ed.png)
+
+ 
+•	Comparing the averages of various facilities for India vs. Union Territories vs. States.
+o	We find insights like:
+	The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
+
+![image](https://user-images.githubusercontent.com/62461730/163446122-69b7efe9-e990-48ee-b28c-a68ddc5c3f27.png)
+
+
+•	Comparing each facility for a state with the country average.
+o	We find insights like:
+	Some states like Chandigarh, have much better water facilities than India as a whole.
+ 
+ ![image](https://user-images.githubusercontent.com/62461730/163446279-7a713289-c97d-4528-9ff9-606672ad6edb.png)
+
+      
+•	Compared the distribution of the facility across the country grouped by state.
+o	We find insights like:
+	Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
+ 
+ ![image](https://user-images.githubusercontent.com/62461730/163446474-ae7e4188-480a-401f-ba6e-93715b3deca5.png)
+
+
 •	Created a filtering algorithm which basically answers the question:
  What state should I live in?
 o	if the user wants to live in a house with the following conditions :
 	For example: Assets like internet connection is very important to the user so they set a threshold of 50%. This means that our algorithm will filter out all the localities in which less then 50% of the houses have internet connection.
 o	Once the user decides on all the fields, we will try to find a locality where such houses are typical.
 o	Finally we plot the count of localities per state which tell us which states will have high probabilities of having houses like the one the user describes(implemented in filtering_final.ipynb)
-o	We have implemented this in our UI : we create a plot by taking the mean of percentage of the features that the user selects for a particular field for all the states.
+
+![image](https://user-images.githubusercontent.com/62461730/163446727-9b311336-ec2a-4f75-9d1a-1efd0be5d50c.png)
+
+ 
+o	We have implemented this in our UI in more detail: we create a plot by taking the mean of percentage of the features that the user selects for a particular field for all the states.
+ 
+![image](https://user-images.githubusercontent.com/62461730/163446831-c70e2610-6bb8-4069-928a-1b83798155f0.png)
+
 
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
