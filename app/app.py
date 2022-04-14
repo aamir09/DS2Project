@@ -514,7 +514,7 @@ if rad =='Home':
 
 
 if rad =='Search':
-  path='E:/Projects/DS2Project/app/dfs/'
+  path='app/PartA_df/'
   files=os.listdir(path)
 
   @st.cache(allow_output_mutation=True,suppress_st_warning=True)
