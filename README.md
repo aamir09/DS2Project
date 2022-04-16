@@ -136,7 +136,7 @@ The above figure conveys the feature importance calculated as the average decrea
 ## References:
 
 
-# Repositoey Navigation Map 
+# Repository Navigation Map 
 
 
 
