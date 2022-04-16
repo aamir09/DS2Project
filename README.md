@@ -94,7 +94,7 @@ The data set is an open source data set available at kaggle. The data contains i
   <img 
     width="1000"
     height="400"
-    src="(https://user-images.githubusercontent.com/62461730/163683664-82c93887-4f76-424c-af1c-7dbb3d8aa6fa.png
+    src="https://user-images.githubusercontent.com/62461730/163683664-82c93887-4f76-424c-af1c-7dbb3d8aa6fa.png"
   >
 </p>
 
