@@ -35,7 +35,7 @@
 
 ### On Comparing the distribution of the facility across the country,  Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
 
- ![image](https://user-images.githubusercontent.com/62461730/163446474-ae7e4188-480a-401f-ba6e-93715b3deca5.png)
+ ![image](![kerosene_1](https://user-images.githubusercontent.com/62461730/163684319-532323d8-c02a-46b4-871f-cb7e8868e384.jpg))
 
 
 ### Filtering 
