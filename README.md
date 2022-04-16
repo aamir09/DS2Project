@@ -101,8 +101,17 @@ In level1 we create the master data by combining the files for the six cities. T
 Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the 'Other' branch).
 So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.
 
+### Results 
 
+#### APPROACH A
 
+![image](https://user-images.githubusercontent.com/62461730/163685052-e412569d-14e2-40b0-86fa-37fbda33f377.png)
+
+Random forest outperforms every other model in terms of test mse while the most complex network in the kitty; the neural network has the worst mse on the test set. The above graph is sorted with respect to the test set mse. The generalization error is the difference between the mse of train set and test set. Random forest seems to generalise poorly as compared to other models with higher mse.
+
+![image](https://user-images.githubusercontent.com/62461730/163685079-e01e3019-8100-42fa-835b-91e0ab79e891.png)
+
+Neural Network again the worst performer and is not able to explain any variance of the features in the predictions. The Random Forest does bag the highest rank but again the generalization error is quite high, in comparison, bagging ensemble looks more robust as the generalization is low and test mse and r2score are similar to that of Random Forest. Since the bagging model is more robust we choose the bagging model as our best performing model.
 
 
 ## References:
