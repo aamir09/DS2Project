@@ -2,33 +2,30 @@
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
-•	Visualized and interpreted the correlations of various fields.
-o	We find insights like:
-	We find a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
+<p align="center">
+  <img 
+    width="600"
+    height="400"
+    src="https://user-images.githubusercontent.com/62461730/163445913-ccaea730-6521-4633-9669-6b7076e848ed.png"
+  >
+</p>
 
-![image](https://user-images.githubusercontent.com/62461730/163445913-ccaea730-6521-4633-9669-6b7076e848ed.png)
+-- We find a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
 
  
-•	Comparing the averages of various facilities for India vs. Union Territories vs. States.
-o	We find insights like:
-	The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
-
 ![image](https://user-images.githubusercontent.com/62461730/163446122-69b7efe9-e990-48ee-b28c-a68ddc5c3f27.png)
+-- The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
 
-
-•	Comparing each facility for a state with the country average.
-o	We find insights like:
-	Some states like Chandigarh, have much better water facilities than India as a whole.
- 
  ![image](https://user-images.githubusercontent.com/62461730/163446279-7a713289-c97d-4528-9ff9-606672ad6edb.png)
 
-      
-•	Compared the distribution of the facility across the country grouped by state.
-o	We find insights like:
-	Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
+-- While comparing each facility of a state against the country average, some states like Chandigarh, have much better water facilities than India as a whole.
  
+
+
  ![image](https://user-images.githubusercontent.com/62461730/163446474-ae7e4188-480a-401f-ba6e-93715b3deca5.png)
 
+On Comparing the distribution of the facility across the country,  Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
+ 
 
 •	Created a filtering algorithm which basically answers the question:
  What state should I live in?
