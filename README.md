@@ -4,19 +4,32 @@
 
 <p align="center">
   <img 
-    width="600"
-    height="400"
+    width="400"
+    height="300"
     src="https://user-images.githubusercontent.com/62461730/163445913-ccaea730-6521-4633-9669-6b7076e848ed.png"
   >
 </p>
 
--- We find a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
+-- We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
 
- 
-![image](https://user-images.githubusercontent.com/62461730/163446122-69b7efe9-e990-48ee-b28c-a68ddc5c3f27.png)
+ <p align="center">
+  <img 
+    width="400"
+    height="300"
+    src="https://user-images.githubusercontent.com/62461730/163446122-69b7efe9-e990-48ee-b28c-a68ddc5c3f27.png"
+  >
+</p>
+
 -- The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
 
- ![image](https://user-images.githubusercontent.com/62461730/163446279-7a713289-c97d-4528-9ff9-606672ad6edb.png)
+<p align="center">
+  <img 
+    width="400"
+    height="300"
+    src="https://user-images.githubusercontent.com/62461730/163446279-7a713289-c97d-4528-9ff9-606672ad6edb.png"
+  >
+</p>
+
 
 -- While comparing each facility of a state against the country average, some states like Chandigarh, have much better water facilities than India as a whole.
  
