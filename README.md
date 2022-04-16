@@ -1,6 +1,6 @@
 # Deep Dive of Housing in India 
 
-A detailed report of the project can be found here: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
+<i>A detailed report of the project can be found here</i>: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
