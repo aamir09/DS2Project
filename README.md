@@ -86,11 +86,25 @@ The data set is an open source data set available at kaggle. The data contains i
 
 •	Random Forest
 
-•	Gradient Boosting
+•	Gradient Boosting Algorithms
 
-Code for all the models have been saved in the folder Part B/models. The model weights have been saved in PartB/models/savedModels.
-We then find the mse and R2 scores of each model and compare them.
-We also visualized local and global feature importance to understand the model better. This code can be found in eda and eda2 files.
+### APPROACH B
+
+<p align="center">
+  <img 
+    width="1000"
+    height="400"
+    src="(https://user-images.githubusercontent.com/62461730/163683664-82c93887-4f76-424c-af1c-7dbb3d8aa6fa.png
+  >
+</p>
+
+
+Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the 'Other' branch).
+So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.
+
+
+
+
 
 ## References:
 https://www.youtube.com/watch?v=YCwRd-N3D14
