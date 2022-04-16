@@ -45,10 +45,9 @@ Two filtering algorithms are built to answer a question <b>What state should I l
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
 
-This dataset comprises data that was scraped. It includes:
-•	collection of prices of new and resale houses located in the metropolitan areas of India
-•	the amenities provided for each house
-Our main.py contains the general pipeline used for our solution:
+The data set is an open source data set available at kaggle. The data contains information about the house and its amenities as mentioned above. The data is distributed in 5 files and each represent a metro city. Delhi, Mumbai, Bangalore, Chennai, Hyderabad and Kolkata are the ones that are present in the data. Price is our target variable and the rest 39 variables are accounted as feature variables.
+
+### APPROACH A
 
 ![image](https://user-images.githubusercontent.com/62461730/163243136-c918b192-f0d3-4876-9e1d-696e965a40fd.png)
 
