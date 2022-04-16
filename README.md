@@ -25,13 +25,7 @@
 
 ### While comparing each facility of a state against the country average, some states like Chandigarh, have much better water facilities than India as a whole.
 
-<p align="center">
-  <img 
-    width="800"
-    height="400"
-    src="https://user-images.githubusercontent.com/62461730/163446279-7a713289-c97d-4528-9ff9-606672ad6edb.png"
-  >
-</p>
+![CHANDIGARHwater](https://user-images.githubusercontent.com/62461730/163684471-aaacc5b7-50c3-4a41-9d73-64f19838cee5.jpg)
 
 ### On Comparing the distribution of the facility across the country,  Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
 
