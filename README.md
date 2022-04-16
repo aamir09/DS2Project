@@ -115,6 +115,16 @@ Neural Network again the worst performer and is not able to explain any variance
 
 #### APPROACH B
 
+### Model Explanations 
+
+#### APPRAOCH A 
+
+<b>FEATURE IMPORTANCE</b> 
+
+![image](https://user-images.githubusercontent.com/62461730/163685260-e31dc557-bb87-4285-bc55-d13c50db29b8.png)
+
+The above figure conveys the feature importance calculated as the average decrease in variance in the bagging ensemble shown in green and permuation feature importance calculated by permuting a feature column at once and noticing the drop in the oberving metrics shown in grey. These are the top 12 features who contributes gloabally in a predictions, the impact of the rest are negligible. Area is an expected feature to pop up in such metrics and has been ranked the top most feature that contributes globally in making predictions. It is interesting to see that onehot encoded variables for cities are considered importance as well which do indicate that the model is learning from the trend of prices in each city. Number of bedrooms has also made it place and it makes sense as that the price a house with more bedroom is more than a house with less number of bedrooms. Resale, availability of car parking and intercom are also key factors. The engineered feature HQLI has a relatively higher importance to the 30 or more features below it. Rain water harvesting is interesting to see in the mix.
+
 
 ## References:
 
