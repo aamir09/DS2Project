@@ -52,7 +52,10 @@ The data set is an open source data set available at kaggle. The data contains i
 ![image](https://user-images.githubusercontent.com/62461730/163243136-c918b192-f0d3-4876-9e1d-696e965a40fd.png)
 
  
-### Level 1: Creating Master Data: combining the files for the six cities(using functions defined in CreateMasterDataset file)
+### Level 1: Creating Master Data: In level1 we create the master data by combining the files for the six cities. This operation is carried out using pandas concat method with ignoring the indexes of the original datasets so to define a unified index, to disregard the problem of duplicate indices. This ensures that queries on the data set is run smoothly and correctly. This aggregated data is what we are calling the master data. The master data is then split into training and test set which acts an input for level2. The distribution of the dependent variable Price is highly left skewed which makes certain estimates on it very unrelaible, hence we model on the log transformation of the dependent variable. The log transformation brings the distribution closer to a normal distribution and also scales range of the variable. The effect of log transformation are on the dependent variable is shown below.
+
+![image](https://user-images.githubusercontent.com/62461730/163683768-a5a64360-cbd8-4c8c-90ae-4ff457967550.png)
+
 
 ### Level 2: Cleaning Pipeline(functions defined in pipelineClasses file): 
 
