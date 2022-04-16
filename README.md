@@ -33,31 +33,15 @@
   >
 </p>
 
-
-
- 
-
+### On Comparing the distribution of the facility across the country,  Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
 
  ![image](https://user-images.githubusercontent.com/62461730/163446474-ae7e4188-480a-401f-ba6e-93715b3deca5.png)
 
-On Comparing the distribution of the facility across the country,  Bihar, Assam, Jharkhand, Meghalaya, Uttar Pradesh and Odisha heavily rely on Kerosene.
+
+### Filtering 
+
+Two filtering algorithms are built to answer a question <b>What state should I live in?</b>. The principle of both the algorihtms are same, filter the states on the basis of their basic amenities and characteristics and provvide end user the results. The difference is in the results algorithm 1 gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold. Algorithm 2 provides us with visualizatios of mean percentage availibility of the assets selected by the users. Algorithm 2 can be observed in the UI and Algorithm 1 can be found in the PART A folder.
  
-
-•	Created a filtering algorithm which basically answers the question:
- What state should I live in?
-o	if the user wants to live in a house with the following conditions :
-	For example: Assets like internet connection is very important to the user so they set a threshold of 50%. This means that our algorithm will filter out all the localities in which less then 50% of the houses have internet connection.
-o	Once the user decides on all the fields, we will try to find a locality where such houses are typical.
-o	Finally we plot the count of localities per state which tell us which states will have high probabilities of having houses like the one the user describes(implemented in filtering_final.ipynb)
-
-![image](https://user-images.githubusercontent.com/62461730/163446727-9b311336-ec2a-4f75-9d1a-1efd0be5d50c.png)
-
- 
-o	We have implemented this in our UI in more detail: we create a plot by taking the mean of percentage of the features that the user selects for a particular field for all the states.
- 
-![image](https://user-images.githubusercontent.com/62461730/163446831-c70e2610-6bb8-4069-928a-1b83798155f0.png)
-
-
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
 
