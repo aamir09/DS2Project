@@ -113,6 +113,8 @@ Random forest outperforms every other model in terms of test mse while the most 
 
 Neural Network again the worst performer and is not able to explain any variance of the features in the predictions. The Random Forest does bag the highest rank but again the generalization error is quite high, in comparison, bagging ensemble looks more robust as the generalization is low and test mse and r2score are similar to that of Random Forest. Since the bagging model is more robust we choose the bagging model as our best performing model.
 
+#### APPROACH B
+
 
 ## References:
 
