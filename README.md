@@ -1,5 +1,7 @@
 # Deep Dive of Housing in India 
 
+A detailed report of the project can be found here: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
+
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
 ### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
