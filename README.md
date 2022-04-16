@@ -2,6 +2,8 @@
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
+### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
+
 <p align="center">
   <img 
     width="400"
@@ -10,7 +12,7 @@
   >
 </p>
 
--- We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases
+### The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
 
  <p align="center">
   <img 
@@ -20,7 +22,8 @@
   >
 </p>
 
--- The union territories had much better kitchen facilities compared to the other states of India and India as a whole. 
+
+### While comparing each facility of a state against the country average, some states like Chandigarh, have much better water facilities than India as a whole.
 
 <p align="center">
   <img 
@@ -31,7 +34,7 @@
 </p>
 
 
--- While comparing each facility of a state against the country average, some states like Chandigarh, have much better water facilities than India as a whole.
+
  
 
 
