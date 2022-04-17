@@ -2,6 +2,10 @@
 
 <i>A detailed report of the project can be found here</i>: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
+The repository comprises of two parts:
+1) <a href="#description">Description</a>
+2) <a href="#map">Repository Navigation Map</a>
+
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
 ### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
