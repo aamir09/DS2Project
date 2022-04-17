@@ -7,6 +7,8 @@ The repository comprises of two parts:
 2) <a href="https://github.com/aamir09/DS2Project/blob/main/README.md#repository-navigation-map">Repository Navigation Map</a>
 
  <h1 id=“description”>Project Overview</h1>
+ 
+In this project, we delve into Indian housing data, looking at the 2011 Indian Housing Census Data as well as house data from Indias metropolite cities. The exploratory data analysis section of the project answers several questions regarding houses in India for the year 2011 and presents some interesting statistics. Predictive modelling of housing prices in Indias metro cities, including Delhi, Mumbai, Bangalore, Chennai, Kolkata, and Hyderabad, is covered in the second section, which is modelling. To compare and pick which model is most suited to our situation, we train linear models, tree-based models, distance-based models, and neural network-based models. We then explain the best model using several approaches.
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
