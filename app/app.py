@@ -121,6 +121,23 @@ with col3:
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">It can be observed for both the states that Firewood is the most commonly used fuel for cooking. Meghalaya seldom used any other fuel while Jharkhand uses variety of them.</p>'
 st.markdown(summary,unsafe_allow_html=True) 
 
+#Q6.1
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Comparison of water facilities of India and Chandigarh?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/CHANDIGARHwater.jpg',caption='Comparison of Water Facilities in India')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In Chandigarh, 94% of the water is from the tapwater from tap water, while in India its only 20%. Tubewells and borewells contribute 41 percent of the water to India.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+
 #Q6
 
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In which states of India in 2011 does most of Households had the electrnic gadgets?<b></p>'
@@ -166,6 +183,22 @@ with col3:
   st.write('')
 
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Piped sewage system looks like a luxuxry only available at capacity in Chandigarh and New Delhi. Rest of India still uses Septic Tanks for onsite waste water disposal.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+#Q9
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Compairing kitchen facilities in states, union territories and entire India.<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/kitchen.jpg',caption='Laterine Flush Systems Used in India')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Union territories generally perform better than the states. The avg condition of the facilities of India are affected mostly by the states.</p>'
 st.markdown(summary,unsafe_allow_html=True) 
 
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">More interesting questions are answered in the notebook available at <a href="https://github.com/aamir09/DS2Project" target="_blank" style="color=#fffff;text-decoration:none">GitHub</a>.</p>'
@@ -219,6 +252,9 @@ with col3:
 ### Proposed Solution ###
 solution= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Proposed Solution</h3>'
 st.markdown(solution,unsafe_allow_html=True) 
+
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
 
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
 st.markdown(summary,unsafe_allow_html=True)
@@ -483,6 +519,39 @@ with col3:
 summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The interpretation for Left: The location is in Bangalore and not Mumbai hence Mumbai being 0 will decrease the final output score(Mumbai is expensive than other cities hence it makes sense), the location is not Kolkata which add up in the final predictions, simiarly positive weighted variables adds to the final prediction score while negatively weighted ones, decrease it. Right: The sample not being from Mumbai drops it Price as well as having less area. What works in its favor is that it is from Delhi and not from Kolkata but the price is still off by alot. The binary variable here is holding the key as we saw in even the most accurate one on the left. The permuataion importance as well as feature importance also gave a similar account for Mumbai variable and now we also know how much impact and in which direction it may have on our predictions.</p>'
 st.markdown(summary,unsafe_allow_html=True)
 
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
+
+col1, col2, col3= st.columns([2,6,2])
+with col1:
+  st.write('')
+
+with col2:
+  st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
+
+with col3:
+  st.write('')
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Results</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
+col1, col2, col3,col4= st.columns([3,3,3,3])
+with col1:
+  st.metric('Train MSE',0.42)
+
+with col2:
+  st.metric('Test MSE',0.45)
+
+with col3:
+  st.metric('Train R2 Score',0.38)
+
+with col4:
+  st.metric('Test R2 Score',0.33)
+
+
+
 ##### References #######
 
 references= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">References</h3>'
@@ -491,7 +560,7 @@ st.markdown(references,unsafe_allow_html=True)
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data</p>'
 st.markdown(summary,unsafe_allow_html=True)
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
+summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
 st.markdown(summary,unsafe_allow_html=True)
 
 summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp</p>'
