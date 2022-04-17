@@ -3,8 +3,10 @@
 <i>A detailed report of the project can be found here</i>: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
 The repository comprises of two parts:
-1) <a href="#description">Description</a>
+1) <a href="#description">Project Overview</a>
 2) <a href="https://github.com/aamir09/DS2Project/blob/main/README.md#repository-navigation-map">Repository Navigation Map</a>
+
+ <h1 id=“description”>Project Overview</h1>
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
