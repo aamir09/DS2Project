@@ -143,6 +143,17 @@ The above figure conveys the feature importance calculated as the average decrea
 
 ## References:
 
+[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data
+
+[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html
+
+[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp
+
+[4] Decision Trees for Classification: A Machine Learning Algorithm, https://www.xoriant.com/blog/product-engineering/decision-trees-machine-learning-algorithm.html
+
+[5] Gradient boosting machines, a tutorial, https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full
+
+[6] What is Local Interpretable Model-Agnostic Explanations (LIME)?, a tutorial, https://c3.ai/glossary/data-science/lime-local-interpretable-model-agnostic-explanations/
 
  <h1 id=“map”>Repository Navigation Map</h1>
  
