@@ -50,7 +50,14 @@ In this project, we delve into Indian housing data, looking at the 2011 Indian H
 ### Filtering 
 
 Two filtering algorithms are built to answer a question <b>What state should I live in?</b>. The principle of both the algorihtms are same, filter the states on the basis of their basic amenities and characteristics and provvide end user the results. The difference is in the results algorithm 1 gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold. Algorithm 2 provides us with visualizatios of mean percentage availibility of the assets selected by the users. Algorithm 2 can be observed in the UI and Algorithm 1 can be found in the PART A folder.
- 
+
+Exmaples
+
+Algorithm 1: 
+If a user wants to live in an owned house with wooden roof with threshold of 50, wooden walls with threshold of 50, indoor bathroom with threshold of 50, drinkable, tap water with threshold of 20, the statewise count of places is returned and shown below:
+
+![WhatsApp Image 2022-04-17 at 5 49 20 PM](https://user-images.githubusercontent.com/62461730/163723341-9a03e992-87e3-4637-98b4-b768e42e95d1.jpeg)
+
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
 
@@ -151,13 +158,13 @@ The above figure conveys the feature importance calculated as the average decrea
 
 The Feature Importance and Permutation Importance of all 7 decision trees are as given below:
 
-![image](https://user-images.githubusercontent.com/62461730/163702126-6ca4f3f6-82f0-41d1-8e17-92623a5653e0.png)
+![MSE](https://user-images.githubusercontent.com/62461730/163723788-3c6a762a-b6d0-40fa-bbf3-e2a3ee7c6a1d.jpg)
 
 
 
 ## Conclusion
 
-
+While working on this project, we learnt so much about the diversity that we have in India. Union Territories and small states like Daman & Diu, Chandigarh and Goa had better facilities than the big metro cities in India. The exploeratory data analysis does justify the phrase <b>it is not what it looks like</b> as we gathered so many interesting facts about the country. The housing data was in itself a challenge with all the null values it had but at the end, we were able to get pretty decent results and explainable models. 
 
 ## References:
 
@@ -209,10 +216,3 @@ These are the train and test data generated from the pipelines made available fo
 
 #### masterData.csv
 The data is the master data generated which contains no alterations from our pipeline. It is the concatenation of all the states and created with the file createMasterData.py in PART B.
-
-
- 
-
-
-
-
