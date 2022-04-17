@@ -4,7 +4,7 @@
 
 The repository comprises of two parts:
 1) <a href="#description">Description</a>
-2) <a href="#map">Repository Navigation Map</a>
+2) <a href="https://github.com/aamir09/DS2Project/blob/main/README.md#repository-navigation-map">Repository Navigation Map</a>
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
