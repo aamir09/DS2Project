@@ -188,6 +188,7 @@ While working on this project, we learnt so much about the diversity that we hav
  1. eda1.ipynb - In this notebook, we have compared the facilities in the states and Union territories vs the country. We have also seen the top-5 states for each feature, and the situation of the country as a whole. We have marked the top and bottom ranked states in each feature, and plotted the correlation matrix of living conditions with other features as well.
  2. filterAlgorithm1 - Filter the states on the basis of their basic amenities and characteristics and provvide end user the results. It gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold.
  3. stateRankings.ipynb - Here, we have ranked the best states and the worst states for living based on the features in the Household census data. We have given weights to each feature and calculated it using standardized scores and well as normalized scores. 
+ 4. eda2.ipynb - The notebook provides answers to some interesting questions about the state of housing in India. The notebook contains infographics as well as self explanatory graphs to visualize the findings. At the end of the notebook the process of generating QHI, BAI and AI cvs's is also mentioned.
 
 #### PART B
 
