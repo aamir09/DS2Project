@@ -12,6 +12,11 @@ In this project, we delve into Indian housing data, looking at the 2011 Indian H
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
+### Which states in India have good housing conditions and what are some factors affecting this?
+
+![image](https://user-images.githubusercontent.com/62461730/163701716-8dc54dec-e9b0-42e4-adcd-46e8afb9a36b.png)
+
+
 ### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
 
 <p align="center">
