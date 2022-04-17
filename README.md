@@ -12,6 +12,11 @@ In this project, we delve into Indian housing data, looking at the 2011 Indian H
 
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
 
+### Which states in India have good housing conditions and what are some factors affecting this?
+
+![image](https://user-images.githubusercontent.com/62461730/163701716-8dc54dec-e9b0-42e4-adcd-46e8afb9a36b.png)
+
+
 ### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
 
 <p align="center">
@@ -125,6 +130,9 @@ Neural Network again the worst performer and is not able to explain any variance
 
 #### APPROACH B
 
+![image](https://user-images.githubusercontent.com/62461730/163702194-d56a1981-ecb7-48da-913f-41519ee8edd6.png)
+
+
 ### Model Explanations 
 
 #### APPRAOCH A 
@@ -137,14 +145,73 @@ The above figure conveys the feature importance calculated as the average decrea
 
 <i><b>LIME INFERENCES CAN BE FOUND ON OUR WEB APP REPORT</b></i>, here : https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
+#### APPROACH B
+
+<b>FEATURE IMPORTANCE</b> 
+
+The Feature Importance and Permutation Importance of all 7 decision trees are as given below:
+
+![image](https://user-images.githubusercontent.com/62461730/163702126-6ca4f3f6-82f0-41d1-8e17-92623a5653e0.png)
+
+
+
 ## Conclusion
 
 
 
 ## References:
 
+[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data
 
-  <h1 id=“map”>Repository Navigation Map</h1>
+[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html
+
+[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp
+
+[4] Decision Trees for Classification: A Machine Learning Algorithm, https://www.xoriant.com/blog/product-engineering/decision-trees-machine-learning-algorithm.html
+
+[5] Gradient boosting machines, a tutorial, https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full
+
+[6] What is Local Interpretable Model-Agnostic Explanations (LIME)?, a tutorial, https://c3.ai/glossary/data-science/lime-local-interpretable-model-agnostic-explanations/
+
+ <h1 id=“map”>Repository Navigation Map</h1>
+ 
+ ### Folders
+ 
+ #### PART A
+ 1. eda1.ipynb - In this notebook, we have compared the facilities in the states and Union territories vs the country. We have also seen the top-5 states for each feature, and the situation of the country as a whole. We have marked the top and bottom ranked states in each feature, and plotted the correlation matrix of living conditions with other features as well.
+ 2. filterAlgorithm1 - Filter the states on the basis of their basic amenities and characteristics and provvide end user the results. It gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold.
+ 3. stateRankings.ipynb - Here, we have ranked the best states and the worst states for living based on the features in the Household census data. We have given weights to each feature and calculated it using standardized scores and well as normalized scores. 
+
+#### PART B
+
+1. Models - This folder contains files used to build the machine learning and deep learning models in our pipeline.
+2. Datasets - This folder contains datasets for creating the master data.
+3. main.py - It creates the master data, pipelines and generates results on the test results.
+4. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
+5. createMasterData.py - It contains code to create master data which we use in the file main.py.
+6. approachBModel.ipynb- It contains code and results for approach B.
+7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
+
+#### Experimentation & Support Notebooks
+1. Notebook1.ipynb , Notebook2.ipynb - The notebooks are in the raw state, containing all the experiments done while creating the pipeline.
+2. Noteboo3_creating_dataframes - This notebook contains the steps followed to create sub data frames for each super column of 2011 Indian Housing Census Data.
+
+#### app 
+
+1. app.py - This py file contains code for our streamlit report app.
+2. images - This folders contains all the images used in our streamlit report.
+3. requirements.txt - The file is used to install required libraries in streamlit.
+
+### Files
+
+#### train.csv & test.csv
+These are the train and test data generated from the pipelines made available for the public to use in their modelling.
+
+#### masterData.csv
+The data is the master data generated which contains no alterations from our pipeline. It is the concatenation of all the states and created with the file createMasterData.py in PART B.
+
+
+ 
 
 
 
