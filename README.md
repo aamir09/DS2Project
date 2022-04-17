@@ -192,6 +192,10 @@ The Feature Importance and Permutation Importance of all 7 decision trees are as
 6. approachBModel.ipynb- It contains code and results for approach B.
 7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
 
+#### Experimentation & Support Notebooks
+1. Notebook1.ipynb , Notebook2.ipynb - The notebooks are in the raw state, containing all the experiments done while creating the pipeline.
+2. Noteboo3_creating_dataframes - This notebook contains the steps followed to create sub data frames for each super column of 2011 Indian Housing Census Data.
+
 #### app 
 
 1. app.py - This py file contains code for our streamlit report app.
