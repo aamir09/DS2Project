@@ -144,7 +144,39 @@ The above figure conveys the feature importance calculated as the average decrea
 ## References:
 
 
-  <h1 id=“map”>Repository Navigation Map</h1>
+ <h1 id=“map”>Repository Navigation Map</h1>
+ 
+ ### Folders
+ 
+ #### PART A
+ 1. eda1.ipynb - In this notebook, we have compared the facilities in the states and Union territories vs the country. We have also seen the top-5 states for each feature, and the situation of the country as a whole. We have marked the top and bottom ranked states in each feature, and plotted the correlation matrix of living conditions with other features as well.
+ 2. filterAlgorithm1 - Filter the states on the basis of their basic amenities and characteristics and provvide end user the results. It gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold.
+ 3. stateRankings.ipynb - Here, we have ranked the best states and the worst states for living based on the features in the Household census data. We have given weights to each feature and calculated it using standardized scores and well as normalized scores. 
+
+#### PART B
+
+1. Models - This folder contains files used to build the machine learning and deep learning models in our pipeline.
+2. Datasets - This folder contains datasets for creating the master data.
+3. main.py - It creates the master data, pipelines and generates results on the test results.
+4. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
+5. createMasterData.py - It contains code to create master data which we use in the file main.py.
+6. approachBModel.ipynb- It contains code and results for approach B.
+7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
+
+#### app 
+
+1. app.py - This py file contains code for our streamlit report app.
+2. images - This folders contains all the images used in our streamlit report.
+3. requirements.txt - The file is used to install required libraries in streamlit.
+
+#### train.csv & test.csv
+These are the train and test data generated from the pipelines made available for the public to use in their modelling.
+
+#### masterData.csv
+The data is the master data generated which contains no alterations from our pipeline. It is the concatenation of all the states and created with the file createMasterData.py in PART B.
+
+
+ 
 
 
 
