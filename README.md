@@ -58,6 +58,15 @@ If a user wants to live in an owned house with wooden roof with threshold of 50,
 
 ![WhatsApp Image 2022-04-17 at 5 49 20 PM](https://user-images.githubusercontent.com/62461730/163723341-9a03e992-87e3-4637-98b4-b768e42e95d1.jpeg)
 
+Algorithm 2:
+A user selects <b>'Facilities to choose'</b> to choose from the main column, then a select box named <b>Choose further from Lighting source</b> appears where we select <b>'Kerosene for lighting'</b> in the first case and 'Electricity for lighting' in the second one. The maps generated are present here for comparison between the distribution of two ameneties:
+
+![Capture_main](https://user-images.githubusercontent.com/63063432/163845977-6e0c2dcd-c952-48ae-9e58-d4192cbce427.png)
+
+You can also tweak the plot size and the number of enteries in the plot by using the sliders provided.
+
+##### YOU WILL FIND THE IMPLEMENTATION IN THE UI, CLICK ON SEARCH IN THE NAVIGATION BAR AT THE LEFT.
+
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
 
