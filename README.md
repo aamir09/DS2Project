@@ -65,7 +65,7 @@ A user selects <b>'Facilities to choose'</b> to choose from the main column, the
   <img 
     width="800"
     height="600"
-    src="https://user-images.githubusercontent.com/63063432/163852660-e615602e-cc02-4166-8ef0-90dec3016843.png"
+    src="https://user-images.githubusercontent.com/63063432/163852874-c7a38efa-87fa-4e76-ad68-9f824507a59d.png"
   >
 </p> 
 
