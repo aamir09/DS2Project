@@ -63,8 +63,8 @@ A user selects <b>'Facilities to choose'</b> to choose from the main column, the
 
 <p align="center">
   <img 
-    width="800"
-    height="0"
+    width="900"
+    height="400"
     src="https://user-images.githubusercontent.com/63063432/163856181-1f763069-ee89-45e6-8eec-6672887024c7.png"
   >
 </p> 
