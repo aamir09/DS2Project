@@ -644,10 +644,10 @@ if rad =='Search':
       if i=='Ameneties':
         B=j.iloc[:,:2]
       B=pd.concat([B,j.iloc[:,2:]],axis=1,join='inner')
-    B['temp2']=B['District Name']+' '+B['State Name']
-    lat_long=pd.read_csv('app\scrapped_lat_long\lat_long.csv')
-    B=pd.merge(B,lat_long,how='inner',left_on='temp2',right_on='Unnamed: 0')
-    B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
+#     B['temp2']=B['District Name']+' '+B['State Name']
+#     lat_long=pd.read_csv('app\scrapped_lat_long\lat_long.csv')
+#     B=pd.merge(B,lat_long,how='inner',left_on='temp2',right_on='Unnamed: 0')
+#     B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
     return B
   B=fil(dic_)
 #   st.write(B[:1000])
