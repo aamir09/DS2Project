@@ -526,9 +526,6 @@ if rad =='Home':
   st.markdown(globalImp,unsafe_allow_html=True) 
 
 
-  summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
-  st.markdown(summary,unsafe_allow_html=True)
-
   col1, col2, col3= st.columns([3,4,3])
 
   with col1:
