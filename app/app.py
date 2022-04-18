@@ -611,7 +611,7 @@ if rad =='Search':
 
   @st.cache(allow_output_mutation=True,suppress_st_warning=True)
   def ind(i):
-    return pd.read_csv(path+i).drop(['State Code','District Code'],axis=1)
+    return pd.read_pickle(path+i).drop(['State Code','District Code'],axis=1)
 
 
   for j,i in enumerate(files):
@@ -645,7 +645,7 @@ if rad =='Search':
         B=j.iloc[:,:2]
       B=pd.concat([B,j.iloc[:,2:]],axis=1,join='inner')
     B['temp2']=B['District Name']+' '+B['State Name']
-    lat_long=pd.read_csv('app\scrapped_lat_long\lat_long.csv')
+    lat_long=pd.read_csv('app/scrapped_lat_long/lat_long.csv')
     B=pd.merge(B,lat_long,how='inner',left_on='temp2',right_on='Unnamed: 0')
     B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
     return B
