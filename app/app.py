@@ -611,7 +611,7 @@ if rad =='Search':
 
   @st.cache(allow_output_mutation=True,suppress_st_warning=True)
   def ind(i):
-    return pd.read_csv(path+i).drop(['State Code','District Code'],axis=1)
+    return pd.read_pickle(path+i).drop(['State Code','District Code'],axis=1)
 
 
   for j,i in enumerate(files):
@@ -649,7 +649,7 @@ if rad =='Search':
     B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
     return B
   B=fil(dic_)
-  st.write(B[:1000])
+#   st.write(B[:1000])
   
 
 
