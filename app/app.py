@@ -650,7 +650,7 @@ if rad =='Search':
     B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
     return B
   B=fil(dic_)
-  st.write(B[:1000])
+#   st.write(B[:1000])
   
 
 
