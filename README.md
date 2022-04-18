@@ -31,8 +31,8 @@ In this project, we delve into Indian housing data, looking at the 2011 Indian H
 
  <p align="center">
   <img 
-    width="800"
-    height="300"
+    width="900"
+    height="400"
     src="https://user-images.githubusercontent.com/62461730/163684395-e861c213-f6f0-44dc-bd1e-52408b505dfa.jpg"
   >
 </p>
@@ -64,8 +64,8 @@ A user selects <b>'Facilities to choose'</b> to choose from the main column, the
 <p align="center">
   <img 
     width="800"
-    height="400"
-    src="https://user-images.githubusercontent.com/63063432/163852874-c7a38efa-87fa-4e76-ad68-9f824507a59d.png"
+    height="0"
+    src="https://user-images.githubusercontent.com/63063432/163856181-1f763069-ee89-45e6-8eec-6672887024c7.png"
   >
 </p> 
 
