@@ -587,7 +587,7 @@ if rad =='Home':
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
-  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
+  summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp</p>'
