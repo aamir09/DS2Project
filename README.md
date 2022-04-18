@@ -2,7 +2,20 @@
 
 <i>A detailed report of the project can be found here</i>: https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
+The repository comprises of two parts:
+1) <a href="https://github.com/aamir09/DS2Project/blob/main/README.md#project-overview">Project Overview</a>
+2) <a href="https://github.com/aamir09/DS2Project/blob/main/README.md#repository-navigation-map">Repository Navigation Map</a>
+
+ <h1 id=“description”>Project Overview</h1>
+ 
+In this project, we delve into Indian housing data, looking at the 2011 Indian Housing Census Data as well as house data from Indias metropolite cities. The exploratory data analysis section of the project answers several questions regarding houses in India for the year 2011 and presents some interesting statistics. Predictive modelling of housing prices in Indias metro cities, including Delhi, Mumbai, Bangalore, Chennai, Kolkata, and Hyderabad, is covered in the second section, which is modelling. To compare and pick which model is most suited to our situation, we train linear models, tree-based models, distance-based models, and neural network-based models. We then explain the best model using several approaches.
+
 ## Part A - Comprehensive Analysis of India Housing Census Data 2011
+
+### Which states in India have good housing conditions and what are some factors affecting this?
+
+![image](https://user-images.githubusercontent.com/62461730/163701716-8dc54dec-e9b0-42e4-adcd-46e8afb9a36b.png)
+
 
 ### We fond a negative correlation between Households using electricity and those using Kerosene - which implies less reliance on Kerosene as electricity distribution increases.
 
@@ -37,7 +50,14 @@
 ### Filtering 
 
 Two filtering algorithms are built to answer a question <b>What state should I live in?</b>. The principle of both the algorihtms are same, filter the states on the basis of their basic amenities and characteristics and provvide end user the results. The difference is in the results algorithm 1 gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold. Algorithm 2 provides us with visualizatios of mean percentage availibility of the assets selected by the users. Algorithm 2 can be observed in the UI and Algorithm 1 can be found in the PART A folder.
- 
+
+Exmaples
+
+Algorithm 1: 
+If a user wants to live in an owned house with wooden roof with threshold of 50, wooden walls with threshold of 50, indoor bathroom with threshold of 50, drinkable, tap water with threshold of 20, the statewise count of places is returned and shown below:
+
+![WhatsApp Image 2022-04-17 at 5 49 20 PM](https://user-images.githubusercontent.com/62461730/163723341-9a03e992-87e3-4637-98b4-b768e42e95d1.jpeg)
+
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
 
@@ -117,6 +137,9 @@ Neural Network again the worst performer and is not able to explain any variance
 
 #### APPROACH B
 
+![image](https://user-images.githubusercontent.com/62461730/163702194-d56a1981-ecb7-48da-913f-41519ee8edd6.png)
+
+
 ### Model Explanations 
 
 #### APPRAOCH A 
@@ -129,15 +152,68 @@ The above figure conveys the feature importance calculated as the average decrea
 
 <i><b>LIME INFERENCES CAN BE FOUND ON OUR WEB APP REPORT</b></i>, here : https://share.streamlit.io/aamir09/ds2project/main/app/app.py
 
+#### APPROACH B
+
+<b>FEATURE IMPORTANCE</b> 
+
+The Feature Importance and Permutation Importance of all 7 decision trees are as given below:
+
+![MSE](https://user-images.githubusercontent.com/62461730/163723788-3c6a762a-b6d0-40fa-bbf3-e2a3ee7c6a1d.jpg)
+
+
+
 ## Conclusion
 
-
+While working on this project, we learnt so much about the diversity that we have in India. Union Territories and small states like Daman & Diu, Chandigarh and Goa had better facilities than the big metro cities in India. The exploeratory data analysis does justify the phrase <b>it is not what it looks like</b> as we gathered so many interesting facts about the country. The housing data was in itself a challenge with all the null values it had but at the end, we were able to get pretty decent results and explainable models. 
 
 ## References:
 
+[1] When and Why to Standardize Your Data?, https://builtin.com/data-science/when-and-why-standardize-your-data
 
-# Repository Navigation Map 
+[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html
 
+[3] Neural Network, https://www.investopedia.com/terms/n/neuralnetwork.asp
 
+[4] Decision Trees for Classification: A Machine Learning Algorithm, https://www.xoriant.com/blog/product-engineering/decision-trees-machine-learning-algorithm.html
 
+[5] Gradient boosting machines, a tutorial, https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full
 
+[6] What is Local Interpretable Model-Agnostic Explanations (LIME)?, a tutorial, https://c3.ai/glossary/data-science/lime-local-interpretable-model-agnostic-explanations/
+
+ <h1 id=“map”>Repository Navigation Map</h1>
+ 
+ ### Folders
+ 
+ #### PART A
+ 1. eda1.ipynb - In this notebook, we have compared the facilities in the states and Union territories vs the country. We have also seen the top-5 states for each feature, and the situation of the country as a whole. We have marked the top and bottom ranked states in each feature, and plotted the correlation matrix of living conditions with other features as well.
+ 2. filterAlgorithm1 - Filter the states on the basis of their basic amenities and characteristics and provvide end user the results. It gives us the count of districts in state where there are availibiity of certain amenity satisfies the user defined threshold.
+ 3. stateRankings.ipynb - Here, we have ranked the best states and the worst states for living based on the features in the Household census data. We have given weights to each feature and calculated it using standardized scores and well as normalized scores. 
+ 4. eda2.ipynb - The notebook provides answers to some interesting questions about the state of housing in India. The notebook contains infographics as well as self explanatory graphs to visualize the findings. At the end of the notebook the process of generating QHI, BAI and AI cvs's is also mentioned.
+
+#### PART B
+
+1. Models - This folder contains files used to build the machine learning and deep learning models in our pipeline.
+2. Datasets - This folder contains datasets for creating the master data.
+3. main.py - It creates the master data, pipelines and generates results on the test results.
+4. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
+5. createMasterData.py - It contains code to create master data which we use in the file main.py.
+6. approachBModel.ipynb- It contains code and results for approach B.
+7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
+
+#### Experimentation & Support Notebooks
+1. Notebook1.ipynb , Notebook2.ipynb - The notebooks are in the raw state, containing all the experiments done while creating the pipeline.
+2. Noteboo3_creating_dataframes - This notebook contains the steps followed to create sub data frames for each super column of 2011 Indian Housing Census Data.
+
+#### app 
+
+1. app.py - This py file contains code for our streamlit report app.
+2. images - This folders contains all the images used in our streamlit report.
+3. requirements.txt - The file is used to install required libraries in streamlit.
+
+### Files
+
+#### train.csv & test.csv
+These are the train and test data generated from the pipelines made available for the public to use in their modelling.
+
+#### masterData.csv
+The data is the master data generated which contains no alterations from our pipeline. It is the concatenation of all the states and created with the file createMasterData.py in PART B.

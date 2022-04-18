@@ -73,6 +73,25 @@ if rad =='Home':
   st.markdown(summary,unsafe_allow_html=True) 
 
 
+#Q6.1
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Comparison of water facilities of India and Chandigarh?<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/CHANDIGARHwater.jpg',caption='Comparison of Water Facilities in India')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In Chandigarh, 94% of the water is from the tapwater from tap water, while in India its only 20%. Tubewells and borewells contribute 41 percent of the water to India.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+
+#Q6
+=======
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In 2021, According to the reports of Global Health Security Index, India is ranked 68th out of 196 countries in health security. The conditions werent very good in 2011 either, are there any insights that can help us understand the cause?<b></p>'
   st.markdown(summary,unsafe_allow_html=True) 
 
@@ -119,6 +138,25 @@ if rad =='Home':
   st.markdown(summary,unsafe_allow_html=True) 
 
 
+#Q9
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Compairing kitchen facilities in states, union territories and entire India.<b></p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+col1,col2,col3=st.columns([2,6,2])
+with col1:
+  st.write('')
+col2.image('app/images/kitchen.jpg',caption='Laterine Flush Systems Used in India')
+
+with col3:
+  st.write('')
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Union territories generally perform better than the states. The avg condition of the facilities of India are affected mostly by the states.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">More interesting questions are answered in the notebook available at <a href="https://github.com/aamir09/DS2Project" target="_blank" style="color=#fffff;text-decoration:none">GitHub</a>.</p>'
+st.markdown(summary,unsafe_allow_html=True) 
+=======
   #Q5
 
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What were the non eco-friendly fuels Meghalaya and Jharkahand used?<b></p>'
@@ -168,6 +206,12 @@ if rad =='Home':
 
   #Q8 
 
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
+
+summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+=======
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What types of latrine flushes were popular in households of different states of India?<b></p>'
   st.markdown(summary,unsafe_allow_html=True) 
 
@@ -435,8 +479,45 @@ if rad =='Home':
   understanding= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Understanding the Model</h3>'
   st.markdown(understanding,unsafe_allow_html=True) 
 
+
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
+
+col1, col2, col3= st.columns([2,6,2])
+with col1:
+  st.write('')
+
+with col2:
+  st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
+
+with col3:
+  st.write('')
+
+summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
+st.markdown(summary,unsafe_allow_html=True)
+
+approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Results</h3>'
+st.markdown(approach,unsafe_allow_html=True) 
+col1, col2, col3,col4= st.columns([3,3,3,3])
+with col1:
+  st.metric('Train MSE',0.42)
+
+with col2:
+  st.metric('Test MSE',0.45)
+
+with col3:
+  st.metric('Train R2 Score',0.38)
+
+with col4:
+  st.metric('Test R2 Score',0.33)
+
+
+
+##### References #######
+=======
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The understanding of machine learning model has a great importance in real world. If model classifes an image correctly then what are the features that is considering important in the image to generate such predictions? IF you are working in a company solving business problems, the stake holder would want to know what makes your model provide that solution. While worling in a medical field for instance in a disease detection system, you will be asked how your model is detecting the disease. Hence understsanding and explaining your model is a cruical part of being a data scientist and a machine learning practitioners. Another advantage of knwoing your model is that you can debug your model. If you know what is going wrong then probabilities are high that you can fix it, right?</p>'
   st.markdown(summary,unsafe_allow_html=True)
+
 
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The simplest model to understand is the Linear Regression model because the weights directly has a say in the impact the features make but in complex models like neural networks and tree ensembles it might be a little bit more difficult to interpret them and these models are called as black box models. Our best model happens to be a tree ensemble; the bagging tree model. We will globally inspect this model by retrieving the feature importaces that will idicate what ticks our model globally and which features affect the most in the decision making. We will then dive into a local inspection of the predictions with the most error and the least error and get know what features played a role in this process.</p>'
   st.markdown(summary,unsafe_allow_html=True)
@@ -444,6 +525,10 @@ if rad =='Home':
   globalImp= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Global Feature Importance</h3>'
   st.markdown(globalImp,unsafe_allow_html=True) 
 
+
+summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
+st.markdown(summary,unsafe_allow_html=True)
+=======
   col1, col2, col3= st.columns([3,4,3])
 
   with col1:
