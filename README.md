@@ -196,11 +196,11 @@ While working on this project, we learnt so much about the diversity that we hav
 
 1. Models - This folder contains files used to build the machine learning and deep learning models in our pipeline.
 2. Datasets - This folder contains datasets for creating the master data.
-3. main.py - It creates the master data, pipelines and generates results on the test results.
-4. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
-5. createMasterData.py - It contains code to create master data which we use in the file main.py.
-6. approachBModel.ipynb- It contains code and results for approach B.
-7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
+3. main.py - It creates the master data, pipelines and generates results on the test results. To recreate our pipeline results: a) Clone the repository b) Open in VS Code c) Open a new terminal and make sure you have the required libraries d) Run Command: python PartB/main.py 
+5. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
+6. createMasterData.py - It contains code to create master data which we use in the file main.py.
+7. approachBModel.ipynb- It contains code and results for approach B.
+8. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
 
 #### Experimentation & Support Notebooks
 1. Notebook1.ipynb , Notebook2.ipynb - The notebooks are in the raw state, containing all the experiments done while creating the pipeline.
