@@ -638,7 +638,6 @@ if rad =='Search':
   "Water source and location":df_water
   }
 
-  @st.cache(allow_output_mutation=True,suppress_st_warning=True)
   def fil(dic_):
     for i,j in dic_.items():
       if i=='Ameneties':
