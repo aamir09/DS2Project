@@ -480,36 +480,36 @@ if rad =='Home':
   st.markdown(understanding,unsafe_allow_html=True) 
 
 
-approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
-st.markdown(approach,unsafe_allow_html=True) 
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
 
-col1, col2, col3= st.columns([2,6,2])
-with col1:
-  st.write('')
+  col1, col2, col3= st.columns([2,6,2])
+  with col1:
+    st.write('')
 
-with col2:
-  st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
+  with col2:
+    st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
 
-with col3:
-  st.write('')
+  with col3:
+    st.write('')
 
-summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
-st.markdown(summary,unsafe_allow_html=True)
+  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
+  st.markdown(summary,unsafe_allow_html=True)
 
-approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Results</h3>'
-st.markdown(approach,unsafe_allow_html=True) 
-col1, col2, col3,col4= st.columns([3,3,3,3])
-with col1:
-  st.metric('Train MSE',0.42)
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Results</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
+  col1, col2, col3,col4= st.columns([3,3,3,3])
+  with col1:
+    st.metric('Train MSE',0.42)
 
-with col2:
-  st.metric('Test MSE',0.45)
+  with col2:
+    st.metric('Test MSE',0.45)
 
-with col3:
-  st.metric('Train R2 Score',0.38)
+  with col3:
+    st.metric('Train R2 Score',0.38)
 
-with col4:
-  st.metric('Test R2 Score',0.33)
+  with col4:
+    st.metric('Test R2 Score',0.33)
 
 
 
