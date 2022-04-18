@@ -75,23 +75,23 @@ if rad =='Home':
 
 #Q6.1
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Comparison of water facilities of India and Chandigarh?<b></p>'
-st.markdown(summary,unsafe_allow_html=True) 
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Comparison of water facilities of India and Chandigarh?<b></p>'
+  st.markdown(summary,unsafe_allow_html=True) 
 
-col1,col2,col3=st.columns([2,6,2])
-with col1:
-  st.write('')
-col2.image('app/images/CHANDIGARHwater.jpg',caption='Comparison of Water Facilities in India')
+  col1,col2,col3=st.columns([2,6,2])
+  with col1:
+    st.write('')
+  col2.image('app/images/CHANDIGARHwater.jpg',caption='Comparison of Water Facilities in India')
 
-with col3:
-  st.write('')
+  with col3:
+    st.write('')
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In Chandigarh, 94% of the water is from the tapwater from tap water, while in India its only 20%. Tubewells and borewells contribute 41 percent of the water to India.</p>'
-st.markdown(summary,unsafe_allow_html=True) 
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">In Chandigarh, 94% of the water is from the tapwater from tap water, while in India its only 20%. Tubewells and borewells contribute 41 percent of the water to India.</p>'
+  st.markdown(summary,unsafe_allow_html=True) 
 
 
 #Q6
-=======
+
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) In 2021, According to the reports of Global Health Security Index, India is ranked 68th out of 196 countries in health security. The conditions werent very good in 2011 either, are there any insights that can help us understand the cause?<b></p>'
   st.markdown(summary,unsafe_allow_html=True) 
 
@@ -140,23 +140,23 @@ st.markdown(summary,unsafe_allow_html=True)
 
 #Q9
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Compairing kitchen facilities in states, union territories and entire India.<b></p>'
-st.markdown(summary,unsafe_allow_html=True) 
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) Compairing kitchen facilities in states, union territories and entire India.<b></p>'
+  st.markdown(summary,unsafe_allow_html=True) 
 
-col1,col2,col3=st.columns([2,6,2])
-with col1:
-  st.write('')
-col2.image('app/images/kitchen.jpg',caption='Laterine Flush Systems Used in India')
+  col1,col2,col3=st.columns([2,6,2])
+  with col1:
+    st.write('')
+  col2.image('app/images/kitchen.jpg',caption='Laterine Flush Systems Used in India')
 
-with col3:
-  st.write('')
+  with col3:
+    st.write('')
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Union territories generally perform better than the states. The avg condition of the facilities of India are affected mostly by the states.</p>'
-st.markdown(summary,unsafe_allow_html=True) 
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Union territories generally perform better than the states. The avg condition of the facilities of India are affected mostly by the states.</p>'
+  st.markdown(summary,unsafe_allow_html=True) 
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">More interesting questions are answered in the notebook available at <a href="https://github.com/aamir09/DS2Project" target="_blank" style="color=#fffff;text-decoration:none">GitHub</a>.</p>'
-st.markdown(summary,unsafe_allow_html=True) 
-=======
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">More interesting questions are answered in the notebook available at <a href="https://github.com/aamir09/DS2Project" target="_blank" style="color=#fffff;text-decoration:none">GitHub</a>.</p>'
+  st.markdown(summary,unsafe_allow_html=True) 
+
   #Q5
 
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What were the non eco-friendly fuels Meghalaya and Jharkahand used?<b></p>'
@@ -206,12 +206,12 @@ st.markdown(summary,unsafe_allow_html=True)
 
   #Q8 
 
-approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
-st.markdown(approach,unsafe_allow_html=True) 
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
 
-summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
-st.markdown(summary,unsafe_allow_html=True)
-=======
+  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
+  st.markdown(summary,unsafe_allow_html=True)
+
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What types of latrine flushes were popular in households of different states of India?<b></p>'
   st.markdown(summary,unsafe_allow_html=True) 
 
@@ -514,7 +514,7 @@ with col4:
 
 
 ##### References #######
-=======
+
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The understanding of machine learning model has a great importance in real world. If model classifes an image correctly then what are the features that is considering important in the image to generate such predictions? IF you are working in a company solving business problems, the stake holder would want to know what makes your model provide that solution. While worling in a medical field for instance in a disease detection system, you will be asked how your model is detecting the disease. Hence understsanding and explaining your model is a cruical part of being a data scientist and a machine learning practitioners. Another advantage of knwoing your model is that you can debug your model. If you know what is going wrong then probabilities are high that you can fix it, right?</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
@@ -526,9 +526,9 @@ with col4:
   st.markdown(globalImp,unsafe_allow_html=True) 
 
 
-summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
-st.markdown(summary,unsafe_allow_html=True)
-=======
+  summary='<p style="font-family:Courier;text-align:left; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">[2] K-nearest Neighbours Regression, https://bookdown.org/tpinto_home/Regression-and-Classification/k-nearest-neighbours-regression.html</p>'
+  st.markdown(summary,unsafe_allow_html=True)
+
   col1, col2, col3= st.columns([3,4,3])
 
   with col1:
