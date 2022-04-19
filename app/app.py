@@ -589,7 +589,7 @@ if rad =='Home':
   with col3:
     st.write('')
 
-  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">As we can see from the picture above, there are only some features which permutation importance more than 0. The most common feature in this category is no. of bedrooms. In cities like Hyderabad and Mumbai, it is the only important feature. While in Kolkata, no.of bedrooms and resale plays an important role. The highest permutation importance is given to Gasconnection in Delhi. In Banglore, facilities like IndoorGames and Jogging Track play an important role. Whereas in Chennai, car parking and 24x7Security are given the highest importance. Finally our other branch which creates a decision tree on the whole dataset, has high permutation importance for a number of fields.</p>'
+  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">As we can see from the picture above, there are only some features which permutation importance more than 0. The most common feature in this category is no. of bedrooms. In cities like Hyderabad and Mumbai, it is the only important feature. While in Kolkata, no.of bedrooms and resale plays an important role.The highest permutation importance is given to Gasconnection in Delhi.In Banglore, facilities like IndoorGames and Jogging Track play an important role. Whereas in Chennai, car parking and 24x7Security are given the highest importance.</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
   ##### References #######
