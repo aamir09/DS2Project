@@ -31,7 +31,7 @@ rad = st.sidebar.radio('Navigation',['Home','Search'])
 
 if rad =='Home':
   st.markdown('<style> body{background-color:#ffff}</style>',unsafe_allow_html=True) 
-  title= '<h1 style="font-family:Courier; color:#FA8072; align:left;font-size: 3rem;">Exploration and Modelling of Indain Housing Data</h1>'
+  title= '<h1 style="font-family:Courier; color:#FA8072; align:left;font-size: 3rem;">Exploration and Modelling of Indian Housing Data</h1>'
   st.markdown(title,unsafe_allow_html=True) 
 
   contrib_title= '<h2 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.6rem;">Contributors</h2>'
