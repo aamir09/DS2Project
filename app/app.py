@@ -31,7 +31,7 @@ rad = st.sidebar.radio('Navigation',['Home','Search'])
 
 if rad =='Home':
   st.markdown('<style> body{background-color:#ffff}</style>',unsafe_allow_html=True) 
-  title= '<h1 style="font-family:Courier; color:#FA8072; align:left;font-size: 3rem;">Exploration and Modelling of Indain Housing Data</h1>'
+  title= '<h1 style="font-family:Courier; color:#FA8072; align:left;font-size: 3rem;">Exploration and Modelling of Indian Housing Data</h1>'
   st.markdown(title,unsafe_allow_html=True) 
 
   contrib_title= '<h2 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.6rem;">Contributors</h2>'
@@ -629,7 +629,7 @@ if rad =='Search':
 
   @st.cache(allow_output_mutation=True,suppress_st_warning=True)
   def ind(i):
-    return pd.read_csv(path+i).drop(['State Code','District Code'],axis=1)
+    return pd.read_pickle(path+i).drop(['State Code','District Code'],axis=1)
 
 
   for j,i in enumerate(files):
@@ -667,7 +667,7 @@ if rad =='Search':
     B.drop(['temp2','Unnamed: 0'],axis=1,inplace=True)
     return B
   B=fil(dic_)
-  st.write(B[:1000])
+#   st.write(B[:1000])
   
 
 

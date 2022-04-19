@@ -31,8 +31,8 @@ In this project, we delve into Indian housing data, looking at the 2011 Indian H
 
  <p align="center">
   <img 
-    width="800"
-    height="300"
+    width="900"
+    height="400"
     src="https://user-images.githubusercontent.com/62461730/163684395-e861c213-f6f0-44dc-bd1e-52408b505dfa.jpg"
   >
 </p>
@@ -57,6 +57,21 @@ Algorithm 1:
 If a user wants to live in an owned house with wooden roof with threshold of 50, wooden walls with threshold of 50, indoor bathroom with threshold of 50, drinkable, tap water with threshold of 20, the statewise count of places is returned and shown below:
 
 ![WhatsApp Image 2022-04-17 at 5 49 20 PM](https://user-images.githubusercontent.com/62461730/163723341-9a03e992-87e3-4637-98b4-b768e42e95d1.jpeg)
+
+Algorithm 2:
+A user selects <b>'Facilities to choose'</b> to choose from the main column, then a select box named <b>Choose further from Lighting source</b> appears where we select <b>'Kerosene for lighting'</b> in the first case and 'Electricity for lighting' in the second one. The maps generated are present here for comparison between the distribution of two ameneties:
+
+<p align="center">
+  <img 
+    width="900"
+    height="400"
+    src="https://user-images.githubusercontent.com/63063432/163857138-c33ae0d4-d5dc-41a6-b744-939cf07a707e.png"
+  >
+</p> 
+
+You can also tweak the plot size and the number of enteries in the plot by using the sliders provided.
+
+##### YOU WILL FIND THE IMPLEMENTATION IN THE UI, CLICK ON SEARCH IN THE NAVIGATION BAR AT THE LEFT.
 
 
 ## Part B - Housing Price Prediction from Metropolitan Indian Cities
@@ -196,11 +211,11 @@ While working on this project, we learnt so much about the diversity that we hav
 
 1. Models - This folder contains files used to build the machine learning and deep learning models in our pipeline.
 2. Datasets - This folder contains datasets for creating the master data.
-3. main.py - It creates the master data, pipelines and generates results on the test results.
-4. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
-5. createMasterData.py - It contains code to create master data which we use in the file main.py.
-6. approachBModel.ipynb- It contains code and results for approach B.
-7. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
+3. main.py - It creates the master data, pipelines and generates results on the test results. To recreate our pipeline results: a) Clone the repository b) Open in VS Code c) Open a new terminal and make sure you have the required libraries d) Run Command: python PartB/main.py 
+5. pipelineClasses.py - It contains all the classes used in our pipeline. The file is well documented.
+6. createMasterData.py - It contains code to create master data which we use in the file main.py.
+7. approachBModel.ipynb- It contains code and results for approach B.
+8. AI, BAI, QHI - These CSV files are used to generate HQLI feature and are used in pipelineClasses.py file.
 
 #### Experimentation & Support Notebooks
 1. Notebook1.ipynb , Notebook2.ipynb - The notebooks are in the raw state, containing all the experiments done while creating the pipeline.
