@@ -206,11 +206,6 @@ if rad =='Home':
 
   #Q8 
 
-  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
-  st.markdown(approach,unsafe_allow_html=True) 
-
-  summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
-  st.markdown(summary,unsafe_allow_html=True)
 
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;"><b>Q) What types of latrine flushes were popular in households of different states of India?<b></p>'
   st.markdown(summary,unsafe_allow_html=True) 
