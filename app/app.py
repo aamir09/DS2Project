@@ -278,6 +278,9 @@ if rad =='Home':
   solution= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Proposed Solution</h3>'
   st.markdown(solution,unsafe_allow_html=True) 
 
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach A</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
+
   summary='<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The solution we are providing is one of an end-to-end pipeline which takes care of cleaning the data appropriately, adding features from the data as well as by augmentation and training the machine learning and deep learning models. To implement all of this we propose our own custom classes at each step of the pipeline. Figure 2 shows the outline of our proposed pipeline. Our solution is divided into 3 levels, Leve1: Creating Master Data, Level2: Cleaning Pipeline, Level3: Modelling. The end to end pipeline contains only level2 and level3, level1 is computed seperately. The workflow of the pipeline is different from conventional pipelines as we use the fit_transform method to fit our pipeline to the data instead of the conventional fit method to incorporate training of models in our pipeline. The fit_transform method is hence used in conjuction with a train set that is being tranformed in the operation as well as used for modelling. The statistics for validation or test data is also calculated in this step and are used when the transform method is called on the pipeline. The pipeline returns the transformed training data and the trained models on calling the fit_transform method. The transform method functions as defined by convention; it transforms the validation/test data.</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
@@ -383,6 +386,22 @@ if rad =='Home':
   seventh='<ul><li style="font-family:Courier; color:#fff; align:left;font-size: 1.2rem;"><b>Gradient Boosting: </b>In gradient boosting machines, or simply, GBMs, the learning procedure consecutively fits new models to provide a more accurate estimate of the response variable. The principle idea behind this algorithm is to construct the new base-learners to be maximally correlated with the negative gradient of the loss function, associated with the whole ensemble. The loss functions applied can be arbitrary, but to give a better intuition, if the error function is the classic squared-error loss, the learning procedure would result in consecutive error-fitting. In general, the choice of the loss function is up to the researcher, with both a rich variety of loss functions derived so far and with the possibility of implementing ones own task-specific loss.[5]</li><ul>'
   st.markdown(seventh,unsafe_allow_html=True) 
 
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
+
+  col1, col2, col3= st.columns([2,6,2])
+  with col1:
+    st.write('')
+
+  with col2:
+    st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
+
+  with col3:
+    st.write('')
+
+  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
+  st.markdown(summary,unsafe_allow_html=True)
+
   ##### Model Comparison ##########
   comparison= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Model Comparison</h3>'
   st.markdown(comparison,unsafe_allow_html=True) 
@@ -475,29 +494,9 @@ if rad =='Home':
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Neural Network again the worst performer and is not able to explain any variance of the features in the predictions. The Random Forest does bag the highest rank but again the generalization error is quite high, in comparison, bagging ensemble looks more robust as the generalization is low and test mse and r2score are similar to that of Random Forest. Since the bagging model is more robust we choose the bagging model as our best performing model.</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
-  #### Understanding the Model #### 
-  understanding= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Understanding the Model</h3>'
-  st.markdown(understanding,unsafe_allow_html=True) 
-
-
   approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B</h3>'
   st.markdown(approach,unsafe_allow_html=True) 
 
-  col1, col2, col3= st.columns([2,6,2])
-  with col1:
-    st.write('')
-
-  with col2:
-    st.image('app/images/appraochB.jpg','Figure 6: Approach B Model')
-
-  with col3:
-    st.write('')
-
-  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">Through this model we ensure that the highest importance is given to the city in which the house is located in. From our analysis we know that the highest importance is given to features which represent city like mumbai, kolkata, etc. This model also considers the fact that a house cannot be in 2 cities at once. for example, any record cannot contain Bangalore=1 and Chennai=1 as well (unless it is a mistake in which case the decision tree will traverse to sub-tree under the Other branch). So in this approach we divided the training data according to city. We will then train 6 decision trees for all the cities present in the training data. We also train a 7th decision tree on the whole training dataset so that if the test dataset contains a record of a house in a new city(city which is not in training) then the model can still predict for that record. We then aggregated all our results into a list and then found our mean squared error and R2 score for train data as well as test data.</p>'
-  st.markdown(summary,unsafe_allow_html=True)
-
-  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Results</h3>'
-  st.markdown(approach,unsafe_allow_html=True) 
   col1, col2, col3,col4= st.columns([3,3,3,3])
   with col1:
     st.metric('Train MSE',0.42)
@@ -513,7 +512,10 @@ if rad =='Home':
 
 
 
-##### References #######
+  #### Understanding the Model #### 
+  understanding= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.4rem;">Understanding the Model</h3>'
+  st.markdown(understanding,unsafe_allow_html=True) 
+
 
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The understanding of machine learning model has a great importance in real world. If model classifes an image correctly then what are the features that is considering important in the image to generate such predictions? IF you are working in a company solving business problems, the stake holder would want to know what makes your model provide that solution. While worling in a medical field for instance in a disease detection system, you will be asked how your model is detecting the disease. Hence understsanding and explaining your model is a cruical part of being a data scientist and a machine learning practitioners. Another advantage of knwoing your model is that you can debug your model. If you know what is going wrong then probabilities are high that you can fix it, right?</p>'
   st.markdown(summary,unsafe_allow_html=True)
@@ -577,6 +579,22 @@ if rad =='Home':
     st.components.v1.html(white_background + mostHtml,width=800,height=500)
 
   summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">The interpretation for Left: The location is in Bangalore and not Mumbai hence Mumbai being 0 will decrease the final output score(Mumbai is expensive than other cities hence it makes sense), the location is not Kolkata which add up in the final predictions, simiarly positive weighted variables adds to the final prediction score while negatively weighted ones, decrease it. Right: The sample not being from Mumbai drops it Price as well as having less area. What works in its favor is that it is from Delhi and not from Kolkata but the price is still off by alot. The binary variable here is holding the key as we saw in even the most accurate one on the left. The permuataion importance as well as feature importance also gave a similar account for Mumbai variable and now we also know how much impact and in which direction it may have on our predictions.</p>'
+  st.markdown(summary,unsafe_allow_html=True)
+
+  approach= '<h3 style="font-family:Courier; weight:bold;color:#FA8072; align:left;font-size: 1.2rem;">Approach B: Feature Importance</h3>'
+  st.markdown(approach,unsafe_allow_html=True) 
+
+  col1, col2, col3= st.columns([1,8,1])
+  with col1:
+    st.write('')
+
+  with col2:
+    st.image('app/images/approachBFE.jpg','Figure 7: Feature Importances Using for Each State')
+
+  with col3:
+    st.write('')
+
+  summary=f'<p style="font-family:Courier;text-align:justify; weight:bold;color:#ffffff; align:left;font-size: 1.2rem;">As we can see from the picture above, there are only some features which permutation importance more than 0. The most common feature in this category is no. of bedrooms. In cities like Hyderabad and Mumbai, it is the only important feature. While in Kolkata, no.of bedrooms and resale plays an important role. The highest permutation importance is given to Gasconnection in Delhi. In Banglore, facilities like IndoorGames and Jogging Track play an important role. Whereas in Chennai, car parking and 24x7Security are given the highest importance. Finally our other branch which creates a decision tree on the whole dataset, has high permutation importance for a number of fields.</p>'
   st.markdown(summary,unsafe_allow_html=True)
 
   ##### References #######
